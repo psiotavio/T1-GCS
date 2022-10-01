@@ -156,5 +156,13 @@ public class Sistema {
         }
         return nome;
     }
+    public String estatisticas(){
+        String descricao = "";
+        descricao += getQtdMedicos() + "\n";
+        descricao += getQtdPacientes() + "\n";
+        descricao += ""; //COLOCAR O ATRIBUTO DE EXAMES REALIZADOS
+        descricao += ""; //COLOCAR O PERCENTUAL DE EXAMES REALIZADOS
+        return descricao;
+    }
 
 }
