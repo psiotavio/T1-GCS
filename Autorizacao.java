@@ -1,14 +1,15 @@
-import javax.xml.crypto.Data;
+import java.time.LocalDate;
 
-public class Autorizacao {
+public class Autorizacao implements Comparable<Autorizacao>{
 
     private int codigo;
-    private Data date;
+    private LocalDate date;
     private Medico medico;
     private Paciente paciente;
     private enumExame exame;
 
-    public Autorizacao(int codigo, Data date, Medico medico, Paciente paciente, enumExame exame) {
+    public Autorizacao(int codigo, LocalDate date, Medico medico, Paciente paciente, enumExame exame) {
+
         this.codigo = codigo;
         this.date = date;
         this.medico = medico;
@@ -20,7 +21,8 @@ public class Autorizacao {
         return codigo;
     }
 
-    public Data getDate() {
+    public LocalDate getDate() {
+
         return date;
     }
 
@@ -35,4 +37,22 @@ public class Autorizacao {
     public enumExame getExame() {
         return exame;
     }
+
+    @Override
+    public int compareTo(Autorizacao o) {
+        return getDate().compareTo(o.getDate());
+    }
+
+
+    @Override
+    public String toString() {
+        return "Autorizacao{" +
+                "codigo=" + codigo +
+                ", date=" + date +
+                ", medico=" + medico +
+                ", paciente=" + paciente +
+                ", exame=" + exame +
+                '}';
+    }
+
 }
