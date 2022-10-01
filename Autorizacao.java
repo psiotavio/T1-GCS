@@ -21,10 +21,7 @@ public class Autorizacao implements Comparable<Autorizacao>{
         return codigo;
     }
 
-    public LocalDate getDate() {
-
-        return date;
-    }
+    public LocalDate getDate() {return date;}
 
     public Medico getMedico() {
         return medico;

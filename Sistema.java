@@ -49,6 +49,28 @@ public class Sistema {
         }
     }
 
+     /* public void salvaArquivo() {
+
+        Path path = Paths.get("Usuarios.csv");
+
+        try(PrintWriter writer = new PrintWriter(Files.newBufferedWriter(path, Charset.defaultCharset()));
+            BufferedReader reader = Files.newBufferedReader(path, Charset.defaultCharset())) {
+
+            for(Usuario c : lstUsuarios){
+                String t = c.toCsv();
+                writer.println(t);
+                writer.flush();
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+*/
+
+
     public int getQtdMedicos() {
         return qtdMedicos;
     }
