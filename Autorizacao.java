@@ -9,6 +9,7 @@ public class Autorizacao implements Comparable<Autorizacao>{
     private enumExame exame;
 
     public Autorizacao(int codigo, LocalDate date, Medico medico, Paciente paciente, enumExame exame) {
+
         this.codigo = codigo;
         this.date = date;
         this.medico = medico;
@@ -21,6 +22,7 @@ public class Autorizacao implements Comparable<Autorizacao>{
     }
 
     public LocalDate getDate() {
+
         return date;
     }
 
@@ -52,4 +54,5 @@ public class Autorizacao implements Comparable<Autorizacao>{
                 ", exame=" + exame +
                 '}';
     }
+
 }
