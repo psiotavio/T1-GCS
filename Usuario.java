@@ -1,11 +1,10 @@
-public class Usuario {
-    // Cada usuário tem um identificador, um nome e o seu tipo: médico, paciente ou administrador.
+public abstract class Usuario {
+    // Cada usuário tem um identificador, um nome e o seu tipo: médico, paciente
+    // ou administrador.
 
     private int id;
     private String nome;
     private String tipo;
-    
-    
 
     public Usuario(int id, String nome, String tipo) {
         this.id = id;
@@ -17,10 +16,9 @@ public class Usuario {
         return id;
     }
 
-   public String getTipo()
-   {
-    return tipo;
-   }
+    public String getTipo() {
+        return tipo;
+    }
 
     public String getNome() {
         return nome;

@@ -14,25 +14,32 @@ public class Sistema {
     }
 
     public void leArquivo() {
-        String path = "src/Usuarios.csv"; // ABRE O ARQUVIO
+        String path = "Usuarios.csv"; // ABRE O ARQUVIO
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
 
             String line = br.readLine(); // COMEÇA A LER O ARQUVO
 
             while (line != null) { // SEPARA CADA INFORMAÇAO E ARMAZENA EM SEU DEVIDO LUGAR
                 String[] vector = line.split(";");
-                Usuario u = new Usuario(Integer.parseInt(vector[0]), vector[1], vector[2]); // ARMAZENA USUARIO
-                lstUsuarios.add(u);
+                if (vector[2].equals("Medico")) 
+                {
+                   Usuario m = new Medico(Integer.parseInt(vector[0]), vector[1], vector[2]); // ARMAZENA USUARIO MEDICO
+                   lstUsuarios.add(m);
+                   qtdMedicos++;
+                }
+                else if ((vector[2].equals("Paciente")))
+                {
+                   Usuario p = new Paciente(Integer.parseInt(vector[0]), vector[1], vector[2]); // ARMAZENA USUARIO PACIENTE
+                   lstUsuarios.add(p);
+                   qtdPacientes++;
+                }
+                else if ((vector[2].equals("Administrador")))
+                {
+                   Usuario a = new Administrador(Integer.parseInt(vector[0]), vector[1], vector[2]); // ARMAZENA USUARIO ADM
+                   lstUsuarios.add(a);
+                   qtdAdmins++;
+                }
                 line = br.readLine(); // VAI PARA PRÓXIMA LINHA
-
-                if (vector[2].equals("Medico")) { // CONTA QUANTOS MEDICOS TEM
-                    qtdMedicos++;
-                }
-                if (vector[2].equals("Paciente")) { // CONTA QUANTOS PACIENTES TEM
-                    qtdPacientes++;
-                } else { // CONTA QUANTOS ADMNS TEM
-                    qtdAdmins++;
-                }
             }
         } catch (IOException e) { // SE DER ERRO NO ARQUIVO ELE MOSTRA QUAL FOI O ERRO
             System.out.println("Error: " + e.getMessage());
