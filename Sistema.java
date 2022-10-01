@@ -49,6 +49,28 @@ public class Sistema {
         }
     }
 
+    /* public void salvaArquivo() {
+
+        Path path = Paths.get("Usuarios.csv");
+
+        try(PrintWriter writer = new PrintWriter(Files.newBufferedWriter(path, Charset.defaultCharset()));
+            BufferedReader reader = Files.newBufferedReader(path, Charset.defaultCharset())) {
+
+            for(Usuario c : lstUsuarios){     //SALVA EM UMA LINHA O CSV ID;NOME;TIPO
+                String t = c.toCsv();
+                writer.println(t);          //PULA PARA A PROXIMA
+                writer.flush();
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+*/
+
+
     public int getQtdMedicos() {
         return qtdMedicos;
     }
@@ -155,6 +177,14 @@ public class Sistema {
             }
         }
         return nome;
+    }
+    public String estatisticas(){
+        String descricao = "";
+        descricao += getQtdMedicos() + "\n";
+        descricao += getQtdPacientes() + "\n";
+        descricao += ""; //COLOCAR O ATRIBUTO DE EXAMES REALIZADOS
+        descricao += ""; //COLOCAR O PERCENTUAL DE EXAMES REALIZADOS
+        return descricao;
     }
 
 }
