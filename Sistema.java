@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
-
+import java.util.Scanner;
 public class Sistema {
     private LinkedList<Usuario> lstUsuarios;
     private int qtdMedicos;
@@ -11,6 +11,39 @@ public class Sistema {
 
     public Sistema() {
         lstUsuarios = new LinkedList<>();
+    }
+
+    public void executa(){
+        Scanner entrada = new Scanner(System.in);
+        int opcao;
+        do {
+            menu();
+            opcao = entrada.nextInt();
+            switch (opcao) {
+                case 1 :
+                    consultarTabela();
+                    break;
+                case 2 :
+                    pesquisarPorCodigo();
+                    break;
+                case 3 :
+                    pesquisaAlugavelPorNome();
+                    break;
+                default:
+                    System.out.println("Opcao invalida.");
+                    break;
+
+            }
+        }
+        while (opcao != 0);
+    }
+
+    private void menu(){
+        System.out.println("Digite que tipo de usuario voce e : ");
+        System.out.println("1. Medico ");
+        System.out.println("2. Paciente : ");
+        System.out.println("3. administrador ");
+
     }
 
     public void leArquivo() {
