@@ -3,8 +3,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Scanner;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 962803bfa83042ba8bf23e45da9f6e47e61124ca
 public class Sistema {
     private LinkedList<Usuario> lstUsuarios;
+    Scanner in = new Scanner(System.in);
+    Scanner inS = new Scanner(System.in);
     private int qtdMedicos;
     private int qtdPacientes;
     private int qtdAdmins;
@@ -79,6 +85,28 @@ public class Sistema {
         }
     }
 
+    /* public void salvaArquivo() {
+
+        Path path = Paths.get("Usuarios.csv");
+
+        try(PrintWriter writer = new PrintWriter(Files.newBufferedWriter(path, Charset.defaultCharset()));
+            BufferedReader reader = Files.newBufferedReader(path, Charset.defaultCharset())) {
+
+            for(Usuario c : lstUsuarios){     //SALVA EM UMA LINHA O CSV ID;NOME;TIPO
+                String t = c.toCsv();
+                writer.println(t);          //PULA PARA A PROXIMA
+                writer.flush();
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+*/
+
+
     public int getQtdMedicos() {
         return qtdMedicos;
     }
@@ -140,6 +168,59 @@ public class Sistema {
             }
         }
         return null;
+    }
+
+    public void addUsuario(){
+        boolean aux = false;
+        int id = 0;
+        do{ //VALIDACAO PARA NAO TER IDS IGUAIS 
+            System.out.println("Qual o id do usuario? ");
+            id = in.nextInt();
+
+            for (Usuario lst : lstUsuarios) {
+                if (lst.getId()!=id) {
+                    aux = true;
+                }
+            }
+        }while(aux==false);
+
+        System.out.println("Qual o nome do usuario? "); 
+        String nome = inS.nextLine();
+        System.out.println("Qual o tipo do usuario? ");
+        String tipo = inS.nextLine();
+
+        if(tipo.equalsIgnoreCase("Paciente")){ //ADD AS INFOS NA LINKEDLIST
+            Usuario u = new Paciente(id, nome, tipo);
+            lstUsuarios.add(u);
+        } else if(tipo.equalsIgnoreCase("Medico")){
+            Usuario u = new Medico(id, nome, tipo);
+            lstUsuarios.add(u);
+        } else if(tipo.equalsIgnoreCase("Administrador")){
+            Usuario u = new Administrador(id, nome, tipo);
+            lstUsuarios.add(u);
+        }
+    }
+
+    public String buscaUsuario(){ //DEPENDENDO DE COMO FICAR A AUTORIZACAO VAI TER QUE MUDAR A SAIDA DO METODO
+        System.out.println("Qual o nome do usuario a ser pesquisado? ");
+        String nome = inS.nextLine();
+        String[] vector = nome.split(" "); //SEPARA O NOME E SOBRENOME
+        for (Usuario lst : lstUsuarios) { //PESQUISA POR TODOS OS USUARIOS
+            for(int i=0;i<vector.length;i++){ //PESQUISA O NOME E SOBRENOME PRA VER SE TEM UM IGUAL AO DO VETOR
+                if (lst.getNome().equals(vector[i])) {
+                    //RETORNA A LISTA DE AUTORIZACOES (ESPERANDO A LISTA)
+                }
+            }
+        }
+        return nome;
+    }
+    public String estatisticas(){
+        String descricao = "";
+        descricao += getQtdMedicos() + "\n";
+        descricao += getQtdPacientes() + "\n";
+        descricao += ""; //COLOCAR O ATRIBUTO DE EXAMES REALIZADOS
+        descricao += ""; //COLOCAR O PERCENTUAL DE EXAMES REALIZADOS
+        return descricao;
     }
 
 }
