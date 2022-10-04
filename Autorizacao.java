@@ -7,6 +7,10 @@ public class Autorizacao {
     private Paciente paciente;
     private enumExame exame;
 
+    public Autorizacao(){
+
+    }
+
     public Autorizacao(int codigo, String date, Medico medico, Paciente paciente, enumExame exame) {
         this.codigo = codigo;
         this.data = data;

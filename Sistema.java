@@ -3,10 +3,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Scanner;
-<<<<<<< HEAD
-=======
 
->>>>>>> 962803bfa83042ba8bf23e45da9f6e47e61124ca
 public class Sistema {
     private LinkedList<Usuario> lstUsuarios;
     Scanner in = new Scanner(System.in);
@@ -27,13 +24,13 @@ public class Sistema {
             opcao = entrada.nextInt();
             switch (opcao) {
                 case 1 :
-                    consultarTabela();
+                    medico();
                     break;
                 case 2 :
-                    pesquisarPorCodigo();
+                    paciente();
                     break;
                 case 3 :
-                    pesquisaAlugavelPorNome();
+                    administrador();
                     break;
                 default:
                     System.out.println("Opcao invalida.");
@@ -51,6 +48,66 @@ public class Sistema {
         System.out.println("3. administrador ");
 
     }
+
+    private void menuMedico() {
+        System.out.println("Como medico, que tipo de acao voce quer tomar ");
+        System.out.println("1. Incluir uma nova autorizacao ");
+        System.out.println("2  listar todas as autorizacao por paciente");
+        System.out.println("3.  listar todas as autorizacao por exame ");
+    }
+
+    private void medico(){
+        Scanner entrada = new Scanner(System.in);
+        int opcao;
+        do {
+            menuMedico();
+            opcao = entrada.nextInt();
+            switch (opcao){
+                case 1:
+                    addAutorizacao();
+                    break;
+                case 2:
+                    listarTodasAutorizacoesPorPaciente();
+                    break;
+                case 3: listarTodasAutorizacoesPorExame();
+            }
+        }while (opcao!=0);
+    }
+    private void addAutorizacao(){
+        System.out.println("Digite o codigo da sua autorizacao");
+        int codigo = in.nextInt();
+        System.out.println("Digite a data da sua autorizacao");
+        String data = inS.nextLine();
+        System.out.println("Digite o medico que fez autorizacao");
+        String medico = inS.nextLine();
+        System.out.println("Digite o paciente da sua autorizacao");
+        String paciente = inS.nextLine();
+        System.out.println("Digite o exame  da sua autorizacao");
+
+        Autorizacao autorizacao = new Autorizacao();
+
+    }
+
+    private void listarTodasAutorizacoesPorPaciente(){
+
+
+    }
+
+    private void listarTodasAutorizacoesPorExame(){
+
+    }
+
+    private void paciente(){
+
+    }
+
+
+    private void administrador(){
+
+    }
+
+
+
 
     public void leArquivo() {
         String path = "Usuarios.csv"; // ABRE O ARQUVIO
