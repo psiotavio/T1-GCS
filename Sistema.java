@@ -124,12 +124,18 @@ public class Sistema {
         for (Usuario lst : lstUsuarios) {
             String subNomes[] = lst.getNome().split(" ");
             String subN[] = nome.split(" ");
-            if (lst.getNome().equals(nome)) {
-                return lst;
-            }
+            String iniciais = nome.substring(0, 1).toUpperCase() + subNomes[1].substring(0, 1).toUpperCase();
+
             if (subNomes[0].equals(subN[0])) {
                 return lst;
             }
+            if (subNomes[1].equals(nome)) {
+                return lst;
+            }
+            if (iniciais.equals(nome)) {
+                return lst;
+            }
+
         }
         return null;
     }
