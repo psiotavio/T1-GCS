@@ -8,7 +8,6 @@ public class App {
    
         Sistema s = new Sistema();
         s.leArquivo();
-        s.executa();
 
         System.out.println("\n-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_\n");
         System.out.println("\nOLÁ QUE TIPO DE USUARIO VOCÊ É: \n\n1- MÉDICO\n2- PACIENTE\n3- ADMINISTRADOR\n");
