@@ -1,0 +1,42 @@
+* DETALHAMENTO *
+
+1) O sistema deverá permitir escolher o usuário atual a qualquer momento. Cada usuário tem um identificador, um nome e o seu tipo: médico, paciente ou administrador.
+
+2) O sistema deverá permitir a um médico incluir uma nova autorização de exame (não é necessário implementar edição ou exclusão). Cada autorização de exame tem um código numérico sequencial, uma data de cadastro, o médico solicitante, o paciente e o exame solicitado (ex. RaioX, Tomografia etc). Cada autorização permite apenas 1 exame.
+
+   a) Todos os campos devem ser preenchidos via seleção (textual ou visual) e não via digitação de texto puro (ou seja, tecnicamente devem se referir aos objetos em memória e não ser apenas texto puro).
+
+   b) A lista de exames é fixa e deve conter pelo menos 10 tipos diferentes.
+
+3) O sistema deverá permitir a um médico listar todas as autorizações de exame filtrando por paciente ou por tipo de exame. Listar sempre ordenado pela data.
+
+4) O sistema deverá permitir a um paciente marcar um exame como realizado, adicionando a data em
+que foi realizado.
+
+   a) O sistema não deve permitir essa operação se a data informada for anterior à da solicitação ou for posterior a 30 dias da solicitação.
+
+5) O sistema deverá permitir a um paciente listar as suas autorizações de exame, ordenadas pela data.
+
+* 6) O sistema deverá permitir a um administrador incluir um novo usuário (médico, paciente ou outro administrador).
+
+7) O sistema deverá permitir ao administrador buscar um médico ou paciente por parte de seu nome e listar as autorizações daquele usuário.
+
+8) O sistema deverá permitir ao administrador ver estatísticas gerais contendo:
+   * a) Número de médicos ###
+   * b) Número de pacientes ###
+   c) Número de autorizações emitidas
+   *d) Percentual de autorizações com exames já realizados
+
+9) Duas funcionalidades a mais, à escolha do grupo.
+
+* REQUISITOS GERAIS *
+
+1. Deseja-se um sistema de autorização de exames médicos.
+
+* 2. O sistema deverá ser implementado em Java Console /ou/ Web Puro (apenas HTML+CSS+Javascript). Não utilizar frameworks ou outras dependências. A ideia é ter a base de código o mais simples possível. Cuidar para que todos os membros do time conheçam a(s) linguagem(s) escolhida(s).
+
+* 3. Não implementar um mecanismo de persistência de dados. O sistema deverá manter dados apenas em memória durante a execução.
+
+* 4. Não implementar um mecanismo de login. No entanto, deverá ser possível identificar/alterar o usuário/operador que está usando o sistema no momento. Para cada operador, deve-se saber o nome e as suas iniciais.
+
+* 5. O sistema deverá iniciar com dados já preenchidos (em bom número e de boa qualidade), de forma a facilitar os testes.
