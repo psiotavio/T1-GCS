@@ -6,7 +6,6 @@ public class App {
     public static void main(String[] args) throws Exception {
         String nome;
         Sistema s = new Sistema();
-        s.leArquivo();
 
         System.out.println("\n-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_\n");
 
@@ -29,17 +28,13 @@ public class App {
 
                         switch (menu2) {
                             case 1:
-
-                                // ADICIONAR FUNÇAO DE NOVO EXAME AQUI
-
+                               med.addAutorizacao();
                                 System.out.println(
                                         "\n\n-----------------------------------------------------\nPRESSIONE ENTER PARA CONTINUAR: ");
                                 scan.useDelimiter("\r?\n").next();
                                 break;
                             case 2:
-
-                                // ADICIONAR FUNÇAO DE LISTAR EXAMES AQUI
-
+                                med.listarTodasAutorizacoesPorExame();
                                 System.out.println(
                                         "\n\n-----------------------------------------------------\nPRESSIONE ENTER PARA CONTINUAR: ");
                                 scan.useDelimiter("\r?\n").next();
@@ -86,7 +81,7 @@ public class App {
                                 break;
 
                             case 3:
-                                menuMed = false;
+                                menuPac = false;
                                 break;
                         }
                     }
@@ -123,7 +118,7 @@ public class App {
                                 break;
 
                             case 3:
-                                menuMed = false;
+                                menuAdm = false;
                                 break;
                         }
                     }

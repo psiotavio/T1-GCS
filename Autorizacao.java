@@ -1,6 +1,5 @@
     public class Autorizacao {
 
-
     private int codigo;
     private String data;
     private Medico medico;
@@ -34,4 +33,11 @@
     public enumExame getExame() {
         return exame;
     }
+
+    @Override
+    public String toString() {
+        return "\nAutorizacao: " + codigo + "\nData: " + data + "\nMédico: " + medico.getNome() + "\nPaciente: " + paciente.getNome()
+                + "\nExame: " + exame;
+    }
+    
 }

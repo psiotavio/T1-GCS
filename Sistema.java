@@ -14,6 +14,7 @@ public class Sistema {
 
     public Sistema() {
         lstUsuarios = new LinkedList<>();
+        leArquivo();
     }
 
     public void leArquivo() { // LE O ARQUIVO CSV
