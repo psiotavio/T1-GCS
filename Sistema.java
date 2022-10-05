@@ -16,100 +16,7 @@ public class Sistema {
         lstUsuarios = new LinkedList<>();
     }
 
-    public void executa(){
-        Scanner entrada = new Scanner(System.in);
-        int opcao;
-        do {
-            menu();
-            opcao = entrada.nextInt();
-            switch (opcao) {
-                case 1 :
-                    medico();
-                    break;
-                case 2 :
-                    paciente();
-                    break;
-                case 3 :
-                    administrador();
-                    break;
-                default:
-                    System.out.println("Opcao invalida.");
-                    break;
-
-            }
-        }
-        while (opcao != 0);
-    }
-
-    private void menu(){
-        System.out.println("Digite que tipo de usuario voce e : ");
-        System.out.println("1. Medico ");
-        System.out.println("2. Paciente : ");
-        System.out.println("3. administrador ");
-
-    }
-
-    private void menuMedico() {
-        System.out.println("Como medico, que tipo de acao voce quer tomar ");
-        System.out.println("1. Incluir uma nova autorizacao ");
-        System.out.println("2  listar todas as autorizacao por paciente");
-        System.out.println("3.  listar todas as autorizacao por exame ");
-    }
-
-    private void medico(){
-        Scanner entrada = new Scanner(System.in);
-        int opcao;
-        do {
-            menuMedico();
-            opcao = entrada.nextInt();
-            switch (opcao){
-                case 1:
-                    addAutorizacao();
-                    break;
-                case 2:
-                    listarTodasAutorizacoesPorPaciente();
-                    break;
-                case 3: listarTodasAutorizacoesPorExame();
-            }
-        }while (opcao!=0);
-    }
-    private void addAutorizacao(){
-        System.out.println("Digite o codigo da sua autorizacao");
-        int codigo = in.nextInt();
-        System.out.println("Digite a data da sua autorizacao");
-        String data = inS.nextLine();
-        System.out.println("Digite o medico que fez autorizacao");
-        String medico = inS.nextLine();
-        System.out.println("Digite o paciente da sua autorizacao");
-        String paciente = inS.nextLine();
-        System.out.println("Digite o exame  da sua autorizacao");
-
-        Autorizacao autorizacao = new Autorizacao();
-
-    }
-
-    private void listarTodasAutorizacoesPorPaciente(){
-
-
-    }
-
-    private void listarTodasAutorizacoesPorExame(){
-
-    }
-
-    private void paciente(){
-
-    }
-
-
-    private void administrador(){
-
-    }
-
-
-
-
-    public void leArquivo() {
+    public void leArquivo() { // LE O ARQUIVO CSV
         String path = "Usuarios.csv"; // ABRE O ARQUVIO
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
 
@@ -160,23 +67,22 @@ public class Sistema {
             e.printStackTrace();
         }
     }
-
 */
 
 
-    public int getQtdMedicos() {
+    public int getQtdMedicos() { // PEGA TOTAL DE MEDICOS DA LISTA
         return qtdMedicos;
     }
 
-    public int getQtdPacientes() {
+    public int getQtdPacientes() { // PEGA TOTAL DE PACIENTES DA LISTA
         return qtdPacientes;
     }
 
-    public int getQtdAdmins() {
+    public int getQtdAdmins() { // PEGA TOTAL DE ADMS DA LISTA
         return qtdAdmins;
     }
 
-    public String getMedicos() {
+    public String getMedicos() { // PEGA MEDICOS DA LISTA
         LinkedList<Usuario> lstMedicos = new LinkedList<>();
         for (Usuario lst : lstUsuarios) {
             if (lst.getTipo().equals("Medico")) {
@@ -188,7 +94,7 @@ public class Sistema {
         return listaM.replaceAll(", ", "\n").replace("[", "").replace("]", "");
     }
 
-    public String getPacientes() {
+    public String getPacientes() { // PEGA PACIENTES DA LISTA
         LinkedList<Usuario> lstPacientes = new LinkedList<>();
         for (Usuario lst : lstUsuarios) {
             if (lst.getTipo().equals("Paciente")) {
@@ -200,7 +106,7 @@ public class Sistema {
         return listaP.replaceAll(", ", "\n").replace("[", "").replace("]", "");
     }
 
-    public String getAdm() {
+    public String getAdm() { // PEGA ADMS DA LISTA
         LinkedList<Usuario> lstAdm = new LinkedList<>();
         for (Usuario lst : lstUsuarios) {
             if (lst.getTipo().equals("Administrador")) {
@@ -212,7 +118,7 @@ public class Sistema {
         return listaA.replaceAll(", ", "\n").replace("[", "").replace("]", "");
     }
 
-    public Usuario getUsuario(String nome) {
+    public Usuario getUsuario(String nome) { // PEGA USUARIO X DA LISTA
         nome = nome.substring(0, 1).toUpperCase() + nome.substring(1);
         for (Usuario lst : lstUsuarios) {
             String subNomes[] = lst.getNome().split(" ");
@@ -227,8 +133,8 @@ public class Sistema {
         return null;
     }
 
-    
-    public String buscaUsuario(){ //DEPENDENDO DE COMO FICAR A AUTORIZACAO VAI TER QUE MUDAR A SAIDA DO METODO
+    // VERIFICAR ESSE MÉTODO (APARENTEMENTE NÃO SERVE PRA NADA JÁ EXISTE getUsuario())
+    public String buscaUsuario(){ // DEPENDENDO DE COMO FICAR A AUTORIZACAO VAI TER QUE MUDAR A SAIDA DO METODO
         System.out.println("Qual o nome do usuario a ser pesquisado? ");
         String nome = inS.nextLine();
         String[] vector = nome.split(" "); //SEPARA O NOME E SOBRENOME
@@ -241,7 +147,8 @@ public class Sistema {
         }
         return nome;
     }
-    public String estatisticas(){
+
+    public String estatisticas(){ 
         String descricao = "";
         descricao += getQtdMedicos() + "\n";
         descricao += getQtdPacientes() + "\n";
