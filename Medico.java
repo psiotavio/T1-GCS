@@ -4,11 +4,8 @@ import java.util.Scanner;
 public class Medico extends Usuario {
     Scanner in = new Scanner(System.in);
     Scanner inS = new Scanner(System.in);
-
     private ArrayList<Autorizacao> autorizacoes;
-
-
-    private ArrayList<Autorizacao> autorizacoes;
+    
     public Medico(int id, String nome, String tipo) {
         super(id, nome, tipo);
     }
