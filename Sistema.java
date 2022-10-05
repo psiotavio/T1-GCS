@@ -154,8 +154,8 @@ public class Sistema {
         String descricao = "";
         descricao += getQtdMedicos() + "\n";
         descricao += getQtdPacientes() + "\n";
-        descricao += ""; //COLOCAR O ATRIBUTO DE EXAMES REALIZADOS
-        descricao += ""; //COLOCAR O PERCENTUAL DE EXAMES REALIZADOS
+        descricao += Autorizacao.getQtdAutorizacoes() + "\n";
+        descricao += Autorizacao.getPercentualRealizados() + "%\n";
         return descricao;
     }
 

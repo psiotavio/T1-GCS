@@ -24,8 +24,8 @@ que foi realizado.
 8) O sistema deverá permitir ao administrador ver estatísticas gerais contendo:
    * a) Número de médicos ###
    * b) Número de pacientes ###
-   c) Número de autorizações emitidas
-   d) Percentual de autorizações com exames já realizados
+   * c) Número de autorizações emitidas
+   * d) Percentual de autorizações com exames já realizados
 
 9) Duas funcionalidades a mais, à escolha do grupo.
 
