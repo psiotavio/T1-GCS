@@ -16,6 +16,99 @@ public class Sistema {
         lstUsuarios = new LinkedList<>();
     }
 
+    public void executa(){
+        Scanner entrada = new Scanner(System.in);
+        int opcao;
+        do {
+            menu();
+            opcao = entrada.nextInt();
+            switch (opcao) {
+                case 1 :
+                    medico();
+                    break;
+                case 2 :
+                    paciente();
+                    break;
+                case 3 :
+                    administrador();
+                    break;
+                default:
+                    System.out.println("Opcao invalida.");
+                    break;
+
+            }
+        }
+        while (opcao != 0);
+    }
+
+    private void menu(){
+        System.out.println("Digite que tipo de usuario voce e : ");
+        System.out.println("1. Medico ");
+        System.out.println("2. Paciente : ");
+        System.out.println("3. administrador ");
+
+    }
+
+    private void menuMedico() {
+        System.out.println("Como medico, que tipo de acao voce quer tomar ");
+        System.out.println("1. Incluir uma nova autorizacao ");
+        System.out.println("2  listar todas as autorizacao por paciente");
+        System.out.println("3.  listar todas as autorizacao por exame ");
+    }
+
+    private void medico(){
+        Scanner entrada = new Scanner(System.in);
+        int opcao;
+        do {
+            menuMedico();
+            opcao = entrada.nextInt();
+            switch (opcao){
+                case 1:
+                    addAutorizacao();
+                    break;
+                case 2:
+                    listarTodasAutorizacoesPorPaciente();
+                    break;
+                case 3: listarTodasAutorizacoesPorExame();
+            }
+        }while (opcao!=0);
+    }
+    private void addAutorizacao(){
+        System.out.println("Digite o codigo da sua autorizacao");
+        int codigo = in.nextInt();
+        System.out.println("Digite a data da sua autorizacao");
+        String data = inS.nextLine();
+        System.out.println("Digite o medico que fez autorizacao");
+        String medico = inS.nextLine();
+        System.out.println("Digite o paciente da sua autorizacao");
+        String paciente = inS.nextLine();
+        System.out.println("Digite o exame  da sua autorizacao");
+
+        Autorizacao autorizacao = new Autorizacao();
+
+    }
+
+    private void listarTodasAutorizacoesPorPaciente(){
+
+
+    }
+
+    private void listarTodasAutorizacoesPorExame(){
+
+    }
+
+    private void paciente(){
+
+    }
+
+
+    private void administrador(){
+
+    }
+
+
+
+
     public void leArquivo() {
         String path = "Usuarios.csv"; // ABRE O ARQUVIO
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
@@ -24,23 +117,23 @@ public class Sistema {
 
             while (line != null) { // SEPARA CADA INFORMAÇAO E ARMAZENA EM SEU DEVIDO LUGAR
                 String[] vector = line.split(";");
-                if (vector[2].equals("Medico")) 
+                if (vector[2].equals("Medico"))
                 {
-                   Usuario m = new Medico(Integer.parseInt(vector[0]), vector[1], vector[2]); // ARMAZENA USUARIO MEDICO
-                   lstUsuarios.add(m);
-                   qtdMedicos++;
+                    Usuario m = new Medico(Integer.parseInt(vector[0]), vector[1], vector[2]); // ARMAZENA USUARIO MEDICO
+                    lstUsuarios.add(m);
+                    qtdMedicos++;
                 }
                 else if ((vector[2].equals("Paciente")))
                 {
-                   Usuario p = new Paciente(Integer.parseInt(vector[0]), vector[1], vector[2]); // ARMAZENA USUARIO PACIENTE
-                   lstUsuarios.add(p);
-                   qtdPacientes++;
+                    Usuario p = new Paciente(Integer.parseInt(vector[0]), vector[1], vector[2]); // ARMAZENA USUARIO PACIENTE
+                    lstUsuarios.add(p);
+                    qtdPacientes++;
                 }
                 else if ((vector[2].equals("Administrador")))
                 {
-                   Usuario a = new Administrador(Integer.parseInt(vector[0]), vector[1], vector[2]); // ARMAZENA USUARIO ADM
-                   lstUsuarios.add(a);
-                   qtdAdmins++;
+                    Usuario a = new Administrador(Integer.parseInt(vector[0]), vector[1], vector[2]); // ARMAZENA USUARIO ADM
+                    lstUsuarios.add(a);
+                    qtdAdmins++;
                 }
                 line = br.readLine(); // VAI PARA PRÓXIMA LINHA
             }
@@ -124,18 +217,12 @@ public class Sistema {
         for (Usuario lst : lstUsuarios) {
             String subNomes[] = lst.getNome().split(" ");
             String subN[] = nome.split(" ");
-            String iniciais = nome.substring(0, 1).toUpperCase() + subNomes[1].substring(0, 1).toUpperCase();
-
+            if (lst.getNome().equals(nome)) {
+                return lst;
+            }
             if (subNomes[0].equals(subN[0])) {
                 return lst;
             }
-            if (subNomes[1].equals(nome)) {
-                return lst;
-            }
-            if (iniciais.equals(nome)) {
-                return lst;
-            }
-
         }
         return null;
     }
@@ -154,7 +241,7 @@ public class Sistema {
             }
         }while(aux==false);
 
-        System.out.println("Qual o nome do usuario? "); 
+        System.out.println("Qual o nome do usuario? ");
         String nome = inS.nextLine();
         System.out.println("Qual o tipo do usuario? ");
         String tipo = inS.nextLine();
