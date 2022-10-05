@@ -7,6 +7,8 @@ public class Medico extends Usuario {
 
     private ArrayList<Autorizacao> autorizacoes;
 
+
+    private ArrayList<Autorizacao> autorizacoes;
     public Medico(int id, String nome, String tipo) {
         super(id, nome, tipo);
     }
@@ -40,5 +42,4 @@ public class Medico extends Usuario {
     // private void listarTodasAutorizacoesPorExame(){
 
     // }
-
 }

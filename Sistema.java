@@ -17,6 +17,7 @@ public class Sistema {
     }
 
     public void leArquivo() { // LE O ARQUIVO CSV
+
         String path = "Usuarios.csv"; // ABRE O ARQUVIO
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
 
