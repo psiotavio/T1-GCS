@@ -5,10 +5,8 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-   
         Sistema s = new Sistema();
         s.leArquivo();
-        s.executa();
 
         System.out.println("\n-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_\n");
         System.out.println("\nOLÁ QUE TIPO DE USUARIO VOCÊ É: \n\n1- MÉDICO\n2- PACIENTE\n3- ADMINISTRADOR\n");
@@ -47,8 +45,7 @@ public class App {
 
             }
         }
-
-
+        
         // System.out.println(s.getQtdAdmins()); TESTA SE CONTA OS ADMS
         // System.out.println(s.getQtdMedicos()); TESTA SE CONTA OS ADMS
         // System.out.println(s.getQtdPacientes()); TESTA SE CONTA OS ADMS

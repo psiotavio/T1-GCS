@@ -1,6 +1,4 @@
-    public class Autorizacao {
-
-
+public class Autorizacao {
     private int codigo;
     private String data;
     private Medico medico;
