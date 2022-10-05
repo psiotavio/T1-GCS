@@ -1,5 +1,14 @@
 public enum enumExame {
-    RaioX(1), Tomografia(2), Mamografia(3), Colonoscopia(4), Endoscopia(5), Hemograma(6), Audiometria(7), Espirometria(8), Ultrassonografia(9), Eletrocardiograma(10);
+    RaioX(1),
+    Tomografia(2), 
+    Mamografia(3), 
+    Colonoscopia(4), 
+    Endoscopia(5), 
+    Hemograma(6), 
+    Audiometria(7), 
+    Espirometria(8), 
+    Ultrassonografia(9), 
+    Eletrocardiograma(10);
 
     private int valor;
 
@@ -31,3 +40,4 @@ public enum enumExame {
         }
     }
 }
+

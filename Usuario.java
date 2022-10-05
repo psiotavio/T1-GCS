@@ -36,12 +36,12 @@ public abstract class Usuario {
         return "----------------\nUsuario: " + id + "\nNome: " + nome + "\nTipo: " + tipo + "\n----------------";
     }
 
-    public String toCsv() {                       //TRANSFORMA EM CSV ID;NOME;TIPO
+    public String toCsv() { // TRANSFORMA EM CSV ID;NOME;TIPO
         Path path = Paths.get("toCsv.csv");
 
-        try(PrintWriter writer = new PrintWriter(Files.newBufferedWriter(path, Charset.defaultCharset()));
-            BufferedReader reader = Files.newBufferedReader(path, Charset.defaultCharset())) {
-            writer.format("%d;%s;%s",getId(), getNome(), getTipo());
+        try (PrintWriter writer = new PrintWriter(Files.newBufferedWriter(path, Charset.defaultCharset()));
+                BufferedReader reader = Files.newBufferedReader(path, Charset.defaultCharset())) {
+            writer.format("%d;%s;%s", getId(), getNome(), getTipo());
             writer.flush();
             String line = null;
             line = reader.readLine();

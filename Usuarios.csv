@@ -1,4 +1,4 @@
-888;Harry James Potter;Medico
+888;Harry Potter;Medico
 999;Jack Sparrow;Medico
 601;Bruce Wayne;Administrador
 878;Edna Moda;Administrador
@@ -12,7 +12,7 @@
 701;Han Solo;Administrador
 545;Frodo Baggins;Administrador
 121;Mary Jane;Medico
-110;Bruce Banner;Medico;
+110;Draco Malfoy;Medico;
 301;Troy Bolton;Administrador
 444;Tony Stark;Paciente
 434;Rony Weasley;Administrador
@@ -28,3 +28,6 @@
 212;Michael Cornelone;Administrador
 989;Walter White;Medico
 767;Edward Cullen;Medico
+551;Michael Mayers;Paciente
+115;Jason Voorhees;Paciente 
+623;Dominic Toretto;Paciente
