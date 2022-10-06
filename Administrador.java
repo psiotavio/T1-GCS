@@ -41,4 +41,13 @@ public class Administrador extends Usuario {
                 else System.out.println("ERRO ID JÁ EXISTE!");
             }
 
+            public String estatisticas(){ 
+                String descricao = "";
+                descricao += Sistema.getQtdMedicos() + "\n";
+                descricao += Sistema.getQtdPacientes() + "\n";
+                descricao += Autorizacao.getQtdAutorizacoes() + "\n";
+                descricao += Autorizacao.getPercentualRealizados() + "%\n";
+                return descricao;
+            }
+
 }
