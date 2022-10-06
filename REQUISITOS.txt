@@ -15,7 +15,7 @@ que foi realizado.
 
    * a) O sistema não deve permitir essa operação se a data informada for anterior à da solicitação ou for posterior a 30 dias da solicitação.
 
-5) O sistema deverá permitir a um paciente listar as suas autorizações de exame, ordenadas por data.
+* 5) O sistema deverá permitir a um paciente listar as suas autorizações de exame, ordenadas por data.
 
 * 6) O sistema deverá permitir a um administrador incluir um novo usuário (médico, paciente ou outro administrador).
 

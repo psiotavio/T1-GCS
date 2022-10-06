@@ -2,6 +2,7 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
+import java.util.Collections;
 import java.util.ArrayList;
 
 public class Paciente extends Usuario {
@@ -32,11 +33,11 @@ public class Paciente extends Usuario {
         for (int pos=0;pos<autorizacoes.size()&&!found;pos++) { //pesquisa o vetor por autorizacao com o codigo correspondente
             if (autorizacoes.get(pos).getCodigo()==codigo) {
                 found=true;
-                if (autorizacoes.get(pos).getDataRealizacao()==null) { // verifica se o exame ainda não foi realizado (dataRealizado=null)
+                if (autorizacoes.get(pos).getDataRealizacao()==null) { //verifica se o exame ainda não foi realizado (dataRealizado=null)
                     System.out.print("Digite a data da realização do exame no formato dd/MM/yyyy: ");
-                    String dataRealizado = sc.nextLine(); // paciente digita a data
+                    String dataRealizado = sc.nextLine(); //paciente digita a data
                     try {
-                        LocalDate l1 = LocalDate.parse(dataRealizado,dateFormat);  // converte a String para LocalDate
+                        LocalDate l1 = LocalDate.parse(dataRealizado,dateFormat);  //converte a String para LocalDate
                         int dateComparePassado = l1.compareTo(autorizacoes.get(pos).getDate()); //verifica se a data digitada é maior ou igual à do registro
                         LocalDate mais30Dias = autorizacoes.get(pos).getDate().plusDays(30);
                         int dateCompare30Dias = l1.compareTo(mais30Dias); //verifica se a data digitada está dentro da janela de 30 dias da do registro.
@@ -59,6 +60,19 @@ public class Paciente extends Usuario {
         if (!found)
         {
             System.out.println("Você não possui uma autorização de exame com este codigo.");
+        }
+    }
+
+    public void listarExames() {
+        if (autorizacoes.size()==0) {
+            System.out.println("Você não possui autorizações de exame.");
+        }
+        else {
+            Collections.sort(autorizacoes);
+            for (Autorizacao aut: autorizacoes) {
+                System.out.print(aut.toString());
+                System.out.print("\n----------------------");
+            }
         }
     }
 }
