@@ -8,7 +8,7 @@
 
   *  b) A lista de exames é fixa e deve conter pelo menos 10 tipos diferentes.
 
-3) O sistema deverá permitir a um médico listar todas as autorizações de exame filtrando por paciente ou por tipo de exame. Listar sempre ordenado pela data.
+* 3) O sistema deverá permitir a um médico listar todas as autorizações de exame filtrando por paciente ou por tipo de exame. Listar sempre ordenado pela data. (REVISAR SE ESTÁ ORGANIZADO POR DATA)
 
 * 4) O sistema deverá permitir a um paciente marcar um exame como realizado, adicionando a data em
 que foi realizado.

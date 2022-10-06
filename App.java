@@ -19,7 +19,7 @@ public class App {
                     System.out.println(s.getMedicos());
                     System.out.println("\nOLÁ QUAL MÉDICO VOCÊ É:");
                     nome = scan.next();
-                    Medico med = (Medico) s.getUsuario(nome); // MÉTODO PARA USAR O MÉDICO SELECIONADO E SUAS FUNÇÕES
+                    Medico med = (Medico) Sistema.getUsuario(nome); // MÉTODO PARA USAR O MÉDICO SELECIONADO E SUAS FUNÇÕES
                     while (menuMed == true) {
                         System.out.println(med);
                         System.out.println("\n-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_\n");
@@ -34,7 +34,7 @@ public class App {
                                 scan.useDelimiter("\r?\n").next();
                                 break;
                             case 2:
-                                med.listarTodasAutorizacoesPorExame();
+                                med.tipoDeLista();
                                 System.out.println(
                                         "\n\n-----------------------------------------------------\nPRESSIONE ENTER PARA CONTINUAR: ");
                                 scan.useDelimiter("\r?\n").next();
@@ -53,7 +53,7 @@ public class App {
                     System.out.println(s.getPacientes());
                     System.out.println("\nOLÁ QUAL PACIENTE VOCÊ É:");
                     nome = scan.next();
-                    Paciente pac = (Paciente) s.getUsuario(nome); // MÉTODO PARA USAR O PACIENTE SELECIONADO E SUAS
+                    Paciente pac = (Paciente) Sistema.getUsuario(nome); // MÉTODO PARA USAR O PACIENTE SELECIONADO E SUAS
                                                                   // FUNÇÕES
                     while (menuPac == true) {
                         System.out.println(pac);
@@ -90,7 +90,7 @@ public class App {
                     System.out.println(s.getAdm());
                     System.out.println("\nOLÁ QUAL ADMINISTRADOR VOCÊ É:");
                     nome = scan.next();
-                    Administrador adm = (Administrador) s.getUsuario(nome); // MÉTODO PARA USAR O ADM SELECIONADO E SUAS
+                    Administrador adm = (Administrador) Sistema.getUsuario(nome); // MÉTODO PARA USAR O ADM SELECIONADO E SUAS
                                                                             // FUNÇÕES
                     while (menuAdm == true) {
                         System.out.println(adm);

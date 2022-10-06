@@ -16,14 +16,12 @@ public class Medico extends Usuario {
     }
 
     public void addAutorizacao() {
-        Sistema s = new Sistema();
-
         System.out.println("Digite o codigo da sua autorizacao");
         int codigo = in.nextInt();
 
         System.out.println("Digite o paciente da sua autorizacao");
         String p = in.next();
-        Paciente pac = (Paciente) s.getUsuario(p);
+        Paciente pac = (Paciente) Sistema.getUsuario(p);
 
         System.out.println(
                 "Escolha o exame da sua autorizacao\n\n[1] RaioX\n[2] Tomografia\n[3] Mamografia\n[4] Colonoscopia\n[5] Endoscopia\n[6] Hemograma\n[7] Audiometria\n[8] Espirometria\n[9] Ultrassonografia\n[10] Eletrocardiograma\n");
@@ -61,17 +59,112 @@ public class Medico extends Usuario {
                 break;
 
         }
-
         Autorizacao autorizacao = new Autorizacao(codigo, this, pac, ex);
+        pac.adicionaAutorizacao(autorizacao);
         System.out.println(autorizacao.toString());
         adicionaAutorizacao(autorizacao);
     }
 
-    // private void listarTodasAutorizacoesPorPaciente(){
+    public void tipoDeLista() {
+        System.out.println(
+                "\nESCOLHA UM TIPO DE LISTAGEM\n\n[1] LISTAR POR PACIENTE\n[2] LISTAR TODAS AS SOLICITAÇÕES POR EXAME\n[3] VOLTAR");
+        int exame = in.nextInt();
+        switch (exame) {
+            case 1:
+                listarTodasAutorizacoesPorPaciente();
+                break;
+            case 2:
+                listarTodasAutorizacoesPorExame();
+                break;
+            case 3:
+                break;
+        }
+    }
 
-    // }
+    public void listarTodasAutorizacoesPorPaciente() {
+        System.out.println("DIGITE O NOME DO PACIENTE: ");
+        String pac = in.next();
+        Paciente p = (Paciente) Sistema.getUsuario(pac);
+        System.out.println(p.getAutorizacoes());
+
+    }
 
     public void listarTodasAutorizacoesPorExame() {
-       System.out.println(autorizacoes.toString());
+        System.out.println(
+                "Escolha o exame da sua autorizacao\n\n[1] RaioX\n[2] Tomografia\n[3] Mamografia\n[4] Colonoscopia\n[5] Endoscopia\n[6] Hemograma\n[7] Audiometria\n[8] Espirometria\n[9] Ultrassonografia\n[10] Eletrocardiograma\n");
+        int exame = in.nextInt();
+        switch (exame) {
+            case 1:
+                for (Autorizacao a : autorizacoes) {
+                    if (a.getExame().equals(enumExame.RaioX)) {
+                        System.out.println(a.toString());
+                    }
+                }
+                break;
+            case 2:
+                for (Autorizacao a : autorizacoes) {
+                    if (a.getExame().equals(enumExame.Tomografia)) {
+                        System.out.println(a.toString());
+                    }
+                }
+                break;
+            case 3:
+                for (Autorizacao a : autorizacoes) {
+                    if (a.getExame().equals(enumExame.Mamografia)) {
+                        System.out.println(a.toString());
+                    }
+                }
+                break;
+            case 4:
+                for (Autorizacao a : autorizacoes) {
+                    if (a.getExame().equals(enumExame.Colonoscopia)) {
+                        System.out.println(a.toString());
+                    }
+                }
+                break;
+            case 5:
+                for (Autorizacao a : autorizacoes) {
+                    if (a.getExame().equals(enumExame.Endoscopia)) {
+                        System.out.println(a.toString());
+                    }
+                }
+                break;
+            case 6:
+                for (Autorizacao a : autorizacoes) {
+                    if (a.getExame().equals(enumExame.Hemograma)) {
+                        System.out.println(a.toString());
+                    }
+                }
+                break;
+            case 7:
+                for (Autorizacao a : autorizacoes) {
+                    if (a.getExame().equals(enumExame.Audiometria)) {
+                        System.out.println(a.toString());
+                    }
+                }
+                break;
+            case 8:
+                for (Autorizacao a : autorizacoes) {
+                    if (a.getExame().equals(enumExame.Espirometria)) {
+                        System.out.println(a.toString());
+                    }
+                }
+                break;
+            case 9:
+                for (Autorizacao a : autorizacoes) {
+                    if (a.getExame().equals(enumExame.Ultrassonografia)) {
+                        System.out.println(a.toString());
+                    }
+                }
+                break;
+            case 10:
+                for (Autorizacao a : autorizacoes) {
+                    if (a.getExame().equals(enumExame.Eletrocardiograma)) {
+                        System.out.println(a.toString());
+                    }
+                }
+                break;
+
+        }
     }
 }

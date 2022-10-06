@@ -1,7 +1,7 @@
-    import java.time.*;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
-    
-    public class Autorizacao {
+
+public class Autorizacao {
 
     private int codigo;
     private LocalDate dataRegistro;
@@ -10,14 +10,14 @@ import java.time.format.DateTimeFormatter;
     private Paciente paciente;
     private enumExame exame;
     private boolean realizado;
-    private static int qtdAutorizacoes=0;
-    private static int qtdExamesRealizados=0;
-    DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private static int qtdAutorizacoes = 0;
+    private static int qtdExamesRealizados = 0;
+    private DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public Autorizacao(int codigo, Medico medico, Paciente paciente, enumExame exame) {
         this.codigo = codigo;
         this.dataRegistro = LocalDate.now();
-        this.dataRealizado = null;
+        // this.dataRealizado = null;
         this.medico = medico;
         this.paciente = paciente;
         this.exame = exame;
@@ -49,9 +49,8 @@ import java.time.format.DateTimeFormatter;
         return exame;
     }
 
-    public void marcarRealizado(LocalDate d) { //EDITAR ESTE METODO PARA MARCAR A DATA QUANDO FOI REALIZADO.
-        if (!this.realizado)
-        {
+    public void marcarRealizado(LocalDate d) { // EDITAR ESTE METODO PARA MARCAR A DATA QUANDO FOI REALIZADO.
+        if (!this.realizado) {
             this.realizado = true;
             qtdExamesRealizados++;
             dataRealizado = d;
@@ -67,16 +66,19 @@ import java.time.format.DateTimeFormatter;
     }
 
     public static String getPercentualRealizados() {
-        double res = ((double)qtdExamesRealizados/(double)qtdAutorizacoes)*100;
+        double res = ((double) qtdExamesRealizados / (double) qtdAutorizacoes) * 100;
         return String.format("%.2f", res);
     }
 
     @Override
     public String toString() {
+
         String str = "\nAutorizacao: " + codigo + "\nData de Solicitação: " + dataRegistro.format(dateFormat);
-        if (getDataRealizacao()==null) {str += "\n Data de Realização: " + dataRealizado.format(dateFormat);}
+        if (getDataRealizacao() != null) {
+            str += "\n Data de Realização: " + dataRealizado.format(dateFormat);
+        }
         str += "\nMédico: " + medico.getNome() + "\nPaciente: " + paciente.getNome() + "\nExame: " + exame;
         return str;
     }
-    
+
 }

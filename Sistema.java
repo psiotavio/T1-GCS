@@ -120,7 +120,7 @@ public class Sistema {
         return listaA.replaceAll(", ", "\n").replace("[", "").replace("]", "");
     }
 
-    public Usuario getUsuario(String nome) { // PEGA USUARIO X DA LISTA
+    public static Usuario getUsuario(String nome) { // PEGA USUARIO X DA LISTA
         nome = nome.substring(0, 1).toUpperCase() + nome.substring(1);
         for (Usuario lst : lstUsuarios) {
             String subNomes[] = lst.getNome().split(" ");

@@ -9,12 +9,19 @@ public class Paciente extends Usuario {
     private ArrayList<Autorizacao> autorizacoes;
     Scanner sc = new Scanner(System.in);
     DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
     public Paciente(int id, String nome, String tipo) {
         super(id, nome, tipo);
+        this.autorizacoes = new ArrayList<>();
     }
 
     public void adicionaAutorizacao(Autorizacao autorizacao){
-        autorizacoes.add(autorizacao);
+        this.autorizacoes.add(autorizacao);
+    }
+
+    public String getAutorizacoes()
+    {
+       return this.autorizacoes.toString();
     }
 
     public void marcarExameComoRealizado() {
