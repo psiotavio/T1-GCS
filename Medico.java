@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class Medico extends Usuario {
     private enumExame ex;
@@ -18,51 +21,62 @@ public class Medico extends Usuario {
     public void addAutorizacao() {
         System.out.println("Digite o codigo da sua autorizacao");
         int codigo = in.nextInt();
+        in.nextLine();
 
-        System.out.println("Digite o paciente da sua autorizacao");
-        String p = in.next();
-        Paciente pac = (Paciente) Sistema.getUsuario(p);
+        System.out.println("Digite a data de registro da sua autorizacao");
+        String date = in.nextLine();
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        try {
+            LocalDate formattedDate = LocalDate.parse(date, df);
 
-        System.out.println(
-                "Escolha o exame da sua autorizacao\n\n[1] RaioX\n[2] Tomografia\n[3] Mamografia\n[4] Colonoscopia\n[5] Endoscopia\n[6] Hemograma\n[7] Audiometria\n[8] Espirometria\n[9] Ultrassonografia\n[10] Eletrocardiograma\n");
-        int exame = in.nextInt();
-        switch (exame) {
-            case 1:
-                ex = enumExame.RaioX;
-                break;
-            case 2:
-                ex = enumExame.Tomografia;
-                break;
-            case 3:
-                ex = enumExame.Mamografia;
-                break;
-            case 4:
-                ex = enumExame.Colonoscopia;
-                break;
-            case 5:
-                ex = enumExame.Endoscopia;
-                break;
-            case 6:
-                ex = enumExame.Hemograma;
-                break;
-            case 7:
-                ex = enumExame.Audiometria;
-                break;
-            case 8:
-                ex = enumExame.Espirometria;
-                break;
-            case 9:
-                ex = enumExame.Ultrassonografia;
-                break;
-            case 10:
-                ex = enumExame.Eletrocardiograma;
-                break;
+            System.out.println("Digite o paciente da sua autorizacao");
+            String p = in.next();
+            Paciente pac = (Paciente) Sistema.getUsuario(p);
 
+            System.out.println(
+                    "Escolha o exame da sua autorizacao\n\n[1] RaioX\n[2] Tomografia\n[3] Mamografia\n[4] Colonoscopia\n[5] Endoscopia\n[6] Hemograma\n[7] Audiometria\n[8] Espirometria\n[9] Ultrassonografia\n[10] Eletrocardiograma\n");
+            int exame = in.nextInt();
+            switch (exame) {
+                case 1:
+                    ex = enumExame.RaioX;
+                    break;
+                case 2:
+                    ex = enumExame.Tomografia;
+                    break;
+                case 3:
+                    ex = enumExame.Mamografia;
+                    break;
+                case 4:
+                    ex = enumExame.Colonoscopia;
+                    break;
+                case 5:
+                    ex = enumExame.Endoscopia;
+                    break;
+                case 6:
+                    ex = enumExame.Hemograma;
+                    break;
+                case 7:
+                    ex = enumExame.Audiometria;
+                    break;
+                case 8:
+                    ex = enumExame.Espirometria;
+                    break;
+                case 9:
+                    ex = enumExame.Ultrassonografia;
+                    break;
+                case 10:
+                    ex = enumExame.Eletrocardiograma;
+                    break;
+
+            }
+            Autorizacao autorizacao = new Autorizacao(codigo, formattedDate, this, pac, ex);
+            pac.adicionaAutorizacao(autorizacao);
+            System.out.println(autorizacao.toString());
+            adicionaAutorizacao(autorizacao);
         }
-        Autorizacao autorizacao = new Autorizacao(codigo, this, pac, ex);
-        pac.adicionaAutorizacao(autorizacao);
-        System.out.println(autorizacao.toString());
-        adicionaAutorizacao(autorizacao);
+        catch (DateTimeParseException e1) {
+            System.out.println("Formatação inválida para a data.");
+        }
     }
 
     public void tipoDeLista() {

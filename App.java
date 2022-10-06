@@ -64,9 +64,7 @@ public class App {
 
                         switch (menu2) {
                             case 1:
-
-                                // ADICIONAR FUNÇAO DE LISTAR EXAMES AUTORIZADOS
-
+                                pac.listarExames();
                                 System.out.println(
                                         "\n\n-----------------------------------------------------\nPRESSIONE ENTER PARA CONTINUAR: ");
                                 scan.useDelimiter("\r?\n").next();
