@@ -10,10 +10,10 @@
 
 3) O sistema deverá permitir a um médico listar todas as autorizações de exame filtrando por paciente ou por tipo de exame. Listar sempre ordenado pela data.
 
-4) O sistema deverá permitir a um paciente marcar um exame como realizado, adicionando a data em
+* 4) O sistema deverá permitir a um paciente marcar um exame como realizado, adicionando a data em
 que foi realizado.
 
-   a) O sistema não deve permitir essa operação se a data informada for anterior à da solicitação ou for posterior a 30 dias da solicitação.
+   * a) O sistema não deve permitir essa operação se a data informada for anterior à da solicitação ou for posterior a 30 dias da solicitação.
 
 5) O sistema deverá permitir a um paciente listar as suas autorizações de exame, ordenadas pela data.
 

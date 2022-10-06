@@ -72,9 +72,7 @@ public class App {
                                 scan.useDelimiter("\r?\n").next();
                                 break;
                             case 2:
-
-                                // ADICIONAR FUNÇAO DE MARCAR EXAME COMO REALIZADO
-
+                                pac.marcarExameComoRealizado();
                                 System.out.println(
                                         "\n\n-----------------------------------------------------\nPRESSIONE ENTER PARA CONTINUAR: ");
                                 scan.useDelimiter("\r?\n").next();

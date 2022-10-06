@@ -21,9 +21,6 @@ public class Medico extends Usuario {
         System.out.println("Digite o codigo da sua autorizacao");
         int codigo = in.nextInt();
 
-        System.out.println("Digite a data da sua autorizacao");
-        String data = in.next();
-
         System.out.println("Digite o paciente da sua autorizacao");
         String p = in.next();
         Paciente pac = (Paciente) s.getUsuario(p);
@@ -65,7 +62,7 @@ public class Medico extends Usuario {
 
         }
 
-        Autorizacao autorizacao = new Autorizacao(codigo, data, this, pac, ex);
+        Autorizacao autorizacao = new Autorizacao(codigo, this, pac, ex);
         System.out.println(autorizacao.toString());
         adicionaAutorizacao(autorizacao);
     }

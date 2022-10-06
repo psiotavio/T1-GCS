@@ -1,17 +1,23 @@
+    import java.time.*;
+import java.time.format.DateTimeFormatter;
+    
     public class Autorizacao {
 
     private int codigo;
-    private String data;
+    private LocalDate dataRegistro;
+    private LocalDate dataRealizado;
     private Medico medico;
     private Paciente paciente;
     private enumExame exame;
     private boolean realizado;
     private static int qtdAutorizacoes=0;
     private static int qtdExamesRealizados=0;
+    DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-    public Autorizacao(int codigo, String date, Medico medico, Paciente paciente, enumExame exame) {
+    public Autorizacao(int codigo, Medico medico, Paciente paciente, enumExame exame) {
         this.codigo = codigo;
-        this.data = date;
+        this.dataRegistro = LocalDate.now();
+        this.dataRealizado = null;
         this.medico = medico;
         this.paciente = paciente;
         this.exame = exame;
@@ -23,8 +29,12 @@
         return codigo;
     }
 
-    public String getDate() {
-        return data;
+    public LocalDate getDate() {
+        return dataRegistro;
+    }
+
+    public LocalDate getDataRealizacao() {
+        return dataRealizado;
     }
 
     public Medico getMedico() {
@@ -39,11 +49,12 @@
         return exame;
     }
 
-    public void marcarRealizado() { //EDITAR ESTE METODO PARA MARCAR A DATA QUANDO FOI REALIZADO.
+    public void marcarRealizado(LocalDate d) { //EDITAR ESTE METODO PARA MARCAR A DATA QUANDO FOI REALIZADO.
         if (!this.realizado)
         {
             this.realizado = true;
             qtdExamesRealizados++;
+            dataRealizado = d;
         }
     }
 
@@ -62,8 +73,10 @@
 
     @Override
     public String toString() {
-        return "\nAutorizacao: " + codigo + "\nData: " + data + "\nMédico: " + medico.getNome() + "\nPaciente: " + paciente.getNome()
-                + "\nExame: " + exame;
+        String str = "\nAutorizacao: " + codigo + "\nData de Solicitação: " + dataRegistro.format(dateFormat);
+        if (getDataRealizacao()==null) {str += "\n Data de Realização: " + dataRealizado.format(dateFormat);}
+        str += "\nMédico: " + medico.getNome() + "\nPaciente: " + paciente.getNome() + "\nExame: " + exame;
+        return str;
     }
     
 }
