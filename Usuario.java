@@ -36,7 +36,7 @@ public abstract class Usuario {
         return "----------------\nUsuario: " + id + "\nNome: " + nome + "\nTipo: " + tipo + "\n----------------";
     }
 
-    public String toCsv() { // TRANSFORMA EM CSV ID;NOME;TIPO
+    public String toCsv() { // TRANSFORMA EM CSV ID;NOME;TIPO PARA SALVAR ARQUIVO
         Path path = Paths.get("toCsv.csv");
 
         try (PrintWriter writer = new PrintWriter(Files.newBufferedWriter(path, Charset.defaultCharset()));
