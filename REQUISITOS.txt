@@ -25,7 +25,7 @@ que foi realizado.
    * a) Número de médicos ###
    * b) Número de pacientes ###
    * c) Número de autorizações emitidas
-   * d) Percentual de autorizações com exames já realizados
+   * d) Percentual de autorizações com exames já realizado
 
 9) Duas funcionalidades a mais, à escolha do grupo.
 
