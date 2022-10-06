@@ -1,6 +1,11 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -51,7 +56,7 @@ public class Sistema {
         }
     }
 
-    /* public void salvaArquivo() {
+    public void salvaArquivo() {    //SALVA ARQUIVO COM A LISTA DE USUARIOS DO MOMENTO UTILIZADO
 
         Path path = Paths.get("Usuarios.csv");
 
@@ -60,7 +65,7 @@ public class Sistema {
 
             for(Usuario c : lstUsuarios){     //SALVA EM UMA LINHA O CSV ID;NOME;TIPO
                 String t = c.toCsv();
-                writer.println(t);          //PULA PARA A PROXIMA
+                writer.println(t);          //PRINTA NA LINHA E PULA PARA A PROXIMA
                 writer.flush();
 
             }
@@ -69,7 +74,6 @@ public class Sistema {
             e.printStackTrace();
         }
     }
-*/
 
 
     public int getQtdMedicos() { // PEGA TOTAL DE MEDICOS DA LISTA
