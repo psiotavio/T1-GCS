@@ -21,7 +21,7 @@ que foi realizado.
 
 7) O sistema deverá permitir ao administrador buscar um médico ou paciente por parte de seu nome e listar as autorizações daquele usuário.
 
-8) O sistema deverá permitir ao administrador ver estatísticas gerais contendo:
+* 8) O sistema deverá permitir ao administrador ver estatísticas gerais contendo:
    * a) Número de médicos ###
    * b) Número de pacientes ###
    * c) Número de autorizações emitidas
