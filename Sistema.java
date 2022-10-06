@@ -14,6 +14,7 @@ public class Sistema {
 
     public Sistema() {
         lstUsuarios = new LinkedList<>();
+        leArquivo();
     }
 
     public void leArquivo() { // LE O ARQUIVO CSV
@@ -119,7 +120,7 @@ public class Sistema {
         return listaA.replaceAll(", ", "\n").replace("[", "").replace("]", "");
     }
 
-    public Usuario getUsuario(String nome) { // PEGA USUARIO X DA LISTA
+    public static Usuario getUsuario(String nome) { // PEGA USUARIO X DA LISTA
         nome = nome.substring(0, 1).toUpperCase() + nome.substring(1);
         for (Usuario lst : lstUsuarios) {
             String subNomes[] = lst.getNome().split(" ");
@@ -153,8 +154,8 @@ public class Sistema {
         String descricao = "";
         descricao += getQtdMedicos() + "\n";
         descricao += getQtdPacientes() + "\n";
-        descricao += ""; //COLOCAR O ATRIBUTO DE EXAMES REALIZADOS
-        descricao += ""; //COLOCAR O PERCENTUAL DE EXAMES REALIZADOS
+        descricao += Autorizacao.getQtdAutorizacoes() + "\n";
+        descricao += Autorizacao.getPercentualRealizados() + "%\n";
         return descricao;
     }
 

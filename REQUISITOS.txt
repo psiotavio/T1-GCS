@@ -1,19 +1,19 @@
 * DETALHAMENTO *
 
-1) O sistema deverá permitir escolher o usuário atual a qualquer momento. Cada usuário tem um identificador, um nome e o seu tipo: médico, paciente ou administrador.
+* 1) O sistema deverá permitir escolher o usuário atual a qualquer momento. Cada usuário tem um identificador, um nome e o seu tipo: médico, paciente ou administrador.
 
-2) O sistema deverá permitir a um médico incluir uma nova autorização de exame (não é necessário implementar edição ou exclusão). Cada autorização de exame tem um código numérico sequencial, uma data de cadastro, o médico solicitante, o paciente e o exame solicitado (ex. RaioX, Tomografia etc). Cada autorização permite apenas 1 exame.
+* 2) O sistema deverá permitir a um médico incluir uma nova autorização de exame (não é necessário implementar edição ou exclusão). Cada autorização de exame tem um código numérico sequencial, uma data de cadastro, o médico solicitante, o paciente e o exame solicitado (ex. RaioX, Tomografia etc). Cada autorização permite apenas 1 exame.
 
-   a) Todos os campos devem ser preenchidos via seleção (textual ou visual) e não via digitação de texto puro (ou seja, tecnicamente devem se referir aos objetos em memória e não ser apenas texto puro).
+  *  a) Todos os campos devem ser preenchidos via seleção (textual ou visual) e não via digitação de texto puro (ou seja, tecnicamente devem se referir aos objetos em memória e não ser apenas texto puro).
 
-   b) A lista de exames é fixa e deve conter pelo menos 10 tipos diferentes.
+  *  b) A lista de exames é fixa e deve conter pelo menos 10 tipos diferentes.
 
-3) O sistema deverá permitir a um médico listar todas as autorizações de exame filtrando por paciente ou por tipo de exame. Listar sempre ordenado pela data.
+* 3) O sistema deverá permitir a um médico listar todas as autorizações de exame filtrando por paciente ou por tipo de exame. Listar sempre ordenado pela data. (REVISAR SE ESTÁ ORGANIZADO POR DATA)
 
-4) O sistema deverá permitir a um paciente marcar um exame como realizado, adicionando a data em
+* 4) O sistema deverá permitir a um paciente marcar um exame como realizado, adicionando a data em
 que foi realizado.
 
-   a) O sistema não deve permitir essa operação se a data informada for anterior à da solicitação ou for posterior a 30 dias da solicitação.
+   * a) O sistema não deve permitir essa operação se a data informada for anterior à da solicitação ou for posterior a 30 dias da solicitação.
 
 5) O sistema deverá permitir a um paciente listar as suas autorizações de exame, ordenadas pela data.
 
@@ -21,11 +21,11 @@ que foi realizado.
 
 7) O sistema deverá permitir ao administrador buscar um médico ou paciente por parte de seu nome e listar as autorizações daquele usuário.
 
-8) O sistema deverá permitir ao administrador ver estatísticas gerais contendo:
+* 8) O sistema deverá permitir ao administrador ver estatísticas gerais contendo:
    * a) Número de médicos ###
    * b) Número de pacientes ###
-   c) Número de autorizações emitidas
-   d) Percentual de autorizações com exames já realizados
+   * c) Número de autorizações emitidas
+   * d) Percentual de autorizações com exames já realizado
 
 9) Duas funcionalidades a mais, à escolha do grupo.
 
