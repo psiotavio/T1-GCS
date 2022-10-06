@@ -20,7 +20,7 @@ public class Administrador extends Usuario {
                     aux = true;
                 }
             }
-        }while(aux==false);
+        } while(aux==false);
 
         System.out.println("Qual o nome do usuario? ");
         String nome = inS.nextLine();
