@@ -128,9 +128,5 @@ public class App {
 
             }
         }
-
-        // System.out.println(s.getQtdAdmins()); TESTA SE CONTA OS ADMS
-        // System.out.println(s.getQtdMedicos()); TESTA SE CONTA OS ADMS
-        // System.out.println(s.getQtdPacientes()); TESTA SE CONTA OS ADMS
     }
 }
