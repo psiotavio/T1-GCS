@@ -10,7 +10,7 @@ public class App {
         System.out.println("\n-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_\n");
 
         while (true) {
-            System.out.println("\nOLÁ QUE TIPO DE USUARIO VOCÊ É: \n\n1- MÉDICO\n2- PACIENTE\n3- ADMINISTRADOR\n");
+            System.out.println("\nOLÁ QUE TIPO DE USUARIO VOCÊ É: \n\n1- MÉDICO\n2- PACIENTE\n3- ADMINISTRADOR\n4- SAIR\n");
             int m = scan.nextInt();
             System.out.println("--------------------------");
             switch (m) {

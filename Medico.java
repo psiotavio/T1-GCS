@@ -96,10 +96,14 @@ public class Medico extends Usuario {
     }
 
     public void listarTodasAutorizacoesPorPaciente() {
+        try{
         System.out.println("DIGITE O NOME DO PACIENTE: ");
         String pac = in.next();
         Paciente p = (Paciente) Sistema.getUsuario(pac);
         System.out.println(p.getAutorizacoes());
+        }catch(NullPointerException e){
+            System.out.println("Erro.");
+        }
 
     }
 

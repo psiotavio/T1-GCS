@@ -125,6 +125,7 @@ public class Sistema {
     }
 
     public static Usuario getUsuario(String nome) { // PEGA USUARIO X DA LISTA
+        try{
         nome = nome.substring(0, 1).toUpperCase() + nome.substring(1);
         for (Usuario lst : lstUsuarios) {
             String subNomes[] = lst.getNome().split(" ");
@@ -136,6 +137,9 @@ public class Sistema {
                 return lst;
             }
         }
+    }catch(NullPointerException exception){
+        System.out.println("Erro.");
+    }
         return null;
     }
 
