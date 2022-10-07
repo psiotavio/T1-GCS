@@ -143,21 +143,6 @@ public class Sistema {
         return null;
     }
 
-    // VERIFICAR ESSE MÉTODO (APARENTEMENTE NÃO SERVE PRA NADA JÁ EXISTE getUsuario())
-    public String buscaUsuario(){ // DEPENDENDO DE COMO FICAR A AUTORIZACAO VAI TER QUE MUDAR A SAIDA DO METODO
-        System.out.println("Qual o nome do usuario a ser pesquisado? ");
-        String nome = inS.nextLine();
-        String[] vector = nome.split(" "); //SEPARA O NOME E SOBRENOME
-        for (Usuario lst : lstUsuarios) { //PESQUISA POR TODOS OS USUARIOS
-            for(int i=0;i<vector.length;i++){ //PESQUISA O NOME E SOBRENOME PRA VER SE TEM UM IGUAL AO DO VETOR
-                if (lst.getNome().equals(vector[i])) {
-                    //RETORNA A LISTA DE AUTORIZACOES (ESPERANDO A LISTA)
-                }
-            }
-        }
-        return nome;
-    }
-
     public String estatisticas(){ 
         String descricao = "";
         descricao += getQtdMedicos() + "\n";
