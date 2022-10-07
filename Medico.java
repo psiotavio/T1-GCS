@@ -181,4 +181,9 @@ public class Medico extends Usuario {
 
         }
     }
+    
+    public String getAutorizacoes()
+    {
+       return this.autorizacoes.toString();
+    }
 }

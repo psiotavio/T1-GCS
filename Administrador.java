@@ -41,4 +41,44 @@ public class Administrador extends Usuario {
                 else System.out.println("ERRO ID JÁ EXISTE!");
             }
 
+            public String estatisticas(){ 
+                String descricao = "";
+                descricao += Sistema.getQtdMedicos() + "\n";
+                descricao += Sistema.getQtdPacientes() + "\n";
+                descricao += Autorizacao.getQtdAutorizacoes() + "\n";
+                descricao += Autorizacao.getPercentualRealizados() + "%\n";
+                return descricao;
+            }
+            
+            public void buscarAutNome(){
+                System.out.println("Deseja buscar as autorizacoes de um medico ou paciente?\n\n[1] Paciente\n[2] Medico");
+                int escolha = in.nextInt();
+                in.nextLine();
+                switch(escolha){
+                    case 1:
+                        System.out.println("Qual o nome do paciente?");
+                        String nomeP = in.nextLine();
+                        Paciente p = (Paciente) Sistema.getUsuario(nomeP);
+                        if(p == null){System.out.println("\nPaciente nao existe!");}
+                        else if(p.getAutorizacoes().equals("[]")){
+                            System.out.println("\nNão há nenhuma autorizacao deste paciente");
+                        }
+                        else{
+                            System.out.println(p.getAutorizacoes() + "\n");
+                        }
+                        break;
+                    case 2:
+                        System.out.println("Qual o nome do medico?");
+                        String nomeM = in.nextLine();
+                        Medico m = (Medico) Sistema.getUsuario(nomeM);
+                        if(m == null){System.out.println("\nMedico nao existe!");}
+                        else if(m.getAutorizacoes().equals("[]")){
+                            System.out.println("\nNão há nenhuma autorizacao deste medico");
+                        }
+                        else{
+                            System.out.println(m.getAutorizacoes() + "\n");
+                        }
+                }
+            }
+
 }

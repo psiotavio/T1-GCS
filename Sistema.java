@@ -13,8 +13,8 @@ public class Sistema {
     static LinkedList<Usuario> lstUsuarios;
     Scanner in = new Scanner(System.in);
     Scanner inS = new Scanner(System.in);
-    private int qtdMedicos;
-    private int qtdPacientes;
+    private static int qtdMedicos;
+    private static int qtdPacientes;
     private int qtdAdmins;
 
     public Sistema() {
@@ -76,11 +76,11 @@ public class Sistema {
     }
 
 
-    public int getQtdMedicos() { // PEGA TOTAL DE MEDICOS DA LISTA
+    public static int getQtdMedicos() { // PEGA TOTAL DE MEDICOS DA LISTA
         return qtdMedicos;
     }
 
-    public int getQtdPacientes() { // PEGA TOTAL DE PACIENTES DA LISTA
+    public static int getQtdPacientes() { // PEGA TOTAL DE PACIENTES DA LISTA
         return qtdPacientes;
     }
 

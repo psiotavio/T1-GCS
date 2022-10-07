@@ -94,7 +94,7 @@ public class App {
                         System.out.println(adm);
                         System.out.println("\n-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_\n");
                         System.out.println(
-                                "\nSELECIONE UMA OPÇÃO: \n\n1- ADICIONAR USUÁRIO\n2- VER ESTATÍSTICAS\n3- SAIR\n");
+                            "\nSELECIONE UMA OPÇÃO: \n\n1- ADICIONAR USUÁRIO\n2- VER ESTATÍSTICAS\n3- LISTAR AUTORIZACOES DE UM PACIENTE OU MEDICO\n4- SAIR\n");
                         int menu2 = scan.nextInt();
 
                         switch (menu2) {
@@ -114,6 +114,12 @@ public class App {
                                 break;
 
                             case 3:
+                                adm.buscarAutNome();
+                                System.out.println(
+                                    "\n\n-----------------------------------------------------\nPRESSIONE ENTER PARA CONTINUAR: ");
+                                scan.useDelimiter("\r?\n").next();
+                                break;
+                            case 4:
                                 menuAdm = false;
                                 break;
                         }
