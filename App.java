@@ -104,10 +104,8 @@ public class App {
                                         "\n\n-----------------------------------------------------\nPRESSIONE ENTER PARA CONTINUAR: ");
                                 scan.useDelimiter("\r?\n").next();
                                 break;
-                            case 2:
-
-                                // ADICIONAR FUNÇAO DE VER ESTATISTICAS
-
+                            case 2: // VERIFICA AS ESTATISTICAS
+                                System.out.println(adm.estatisticas());
                                 System.out.println(
                                         "\n\n-----------------------------------------------------\nPRESSIONE ENTER PARA CONTINUAR: ");
                                 scan.useDelimiter("\r?\n").next();
