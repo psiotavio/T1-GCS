@@ -1,7 +1,7 @@
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
-public class Autorizacao {
+public class Autorizacao implements Comparable<Autorizacao>{
 
     private int codigo;
     private LocalDate dataRegistro;
@@ -14,9 +14,9 @@ public class Autorizacao {
     private static int qtdExamesRealizados = 0;
     private DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-    public Autorizacao(int codigo, Medico medico, Paciente paciente, enumExame exame) {
+    public Autorizacao(int codigo, LocalDate dataRegistro, Medico medico, Paciente paciente, enumExame exame) {
         this.codigo = codigo;
-        this.dataRegistro = LocalDate.now();
+        this.dataRegistro = dataRegistro;
         // this.dataRealizado = null;
         this.medico = medico;
         this.paciente = paciente;
@@ -70,12 +70,17 @@ public class Autorizacao {
         return String.format("%.2f", res);
     }
 
+    public int compareTo(Autorizacao ao) {
+        int comp = dataRegistro.compareTo(ao.getDate());
+        return comp;
+    }
+
     @Override
     public String toString() {
 
         String str = "\nAutorizacao: " + codigo + "\nData de Solicitação: " + dataRegistro.format(dateFormat);
         if (getDataRealizacao() != null) {
-            str += "\n Data de Realização: " + dataRealizado.format(dateFormat);
+            str += "\nData de Realização: " + dataRealizado.format(dateFormat);
         }
         str += "\nMédico: " + medico.getNome() + "\nPaciente: " + paciente.getNome() + "\nExame: " + exame;
         return str;
