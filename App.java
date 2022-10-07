@@ -18,7 +18,8 @@ public class App {
                     boolean menuMed = true;
                     System.out.println(s.getMedicos());
                     System.out.println("\nOLÁ QUAL MÉDICO VOCÊ É:");
-                    nome = scan.next();
+                    scan.nextLine();
+                    nome = scan.nextLine();
                     Medico med = (Medico) Sistema.getUsuario(nome); // MÉTODO PARA USAR O MÉDICO SELECIONADO E SUAS FUNÇÕES
                     while (menuMed == true) {
                         System.out.println(med);
@@ -52,7 +53,8 @@ public class App {
                     boolean menuPac = true;
                     System.out.println(s.getPacientes());
                     System.out.println("\nOLÁ QUAL PACIENTE VOCÊ É:");
-                    nome = scan.next();
+                    scan.nextLine();
+                    nome = scan.nextLine();
                     Paciente pac = (Paciente) Sistema.getUsuario(nome); // MÉTODO PARA USAR O PACIENTE SELECIONADO E SUAS
                                                                   // FUNÇÕES
                     while (menuPac == true) {
@@ -87,7 +89,8 @@ public class App {
                     Boolean menuAdm = true;
                     System.out.println(s.getAdm());
                     System.out.println("\nOLÁ QUAL ADMINISTRADOR VOCÊ É:");
-                    nome = scan.next();
+                    scan.nextLine();
+                    nome = scan.nextLine();
                     Administrador adm = (Administrador) Sistema.getUsuario(nome); // MÉTODO PARA USAR O ADM SELECIONADO E SUAS
                                                                             // FUNÇÕES
                     while (menuAdm == true) {
@@ -96,6 +99,7 @@ public class App {
                         System.out.println(
                             "\nSELECIONE UMA OPÇÃO: \n\n1- ADICIONAR USUÁRIO\n2- VER ESTATÍSTICAS\n3- LISTAR AUTORIZACOES DE UM PACIENTE OU MEDICO\n4- SAIR\n");
                         int menu2 = scan.nextInt();
+
 
                         switch (menu2) {
                             case 1:
