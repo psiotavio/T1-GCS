@@ -33,6 +33,8 @@ public class Medico extends Usuario {
 
             System.out.println("Digite o paciente da sua autorizacao");
             String p = in.next();
+            if (Sistema.getUsuario(p) instanceof Paciente)
+            {
             Paciente pac = (Paciente) Sistema.getUsuario(p);
 
             System.out.println(
@@ -76,6 +78,7 @@ public class Medico extends Usuario {
             System.out.println(autorizacao.toString());
             adicionaAutorizacao(autorizacao);
         }
+    }
         catch(InputMismatchException e){
             System.out.println("Digite um numero não uma String");
             System.out.println("Digite enter");
