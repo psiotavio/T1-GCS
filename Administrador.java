@@ -10,6 +10,7 @@ public class Administrador extends Usuario {
 
     public void retiraUsuario() { // (FUNÇÃO EXTRA!)
         boolean aux = false;
+        boolean aux2 = false;
         System.out.println("\nQual o ID do usuario que deseja remover?");
         int id = in.nextInt();
         int remove = 0;
@@ -20,11 +21,17 @@ public class Administrador extends Usuario {
                 System.out.println(lst.toString() + "\nREMOVIDO COM SUCESSO!");
                 break;
             }
+            if (lst.getId() == this.getId())
+            {
+                System.out.println("ERRO VOCÊ NÃO PODE SE REMOVER");
+                aux2 = true;
+                break;
+            }
             remove++;
         }
 
-        if (aux == false) {
-            System.out.println("ERRO ID JÁ EXISTE!");
+        if (aux == false && aux2 == false) {
+            System.out.println("ERRO USUARIO NÃO ENCONTRADO");
         } else {
             Sistema.lstUsuarios.remove(remove);
         }
