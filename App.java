@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class App {
@@ -9,6 +10,7 @@ public class App {
 
         System.out.println("\n-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_\n");
 
+        try{
         while (true) {
             System.out.println("\nOLÁ QUE TIPO DE USUARIO VOCÊ É: \n\n1- MÉDICO\n2- PACIENTE\n3- ADMINISTRADOR\n4- SAIR\n");
             int m = scan.nextInt();
@@ -132,7 +134,13 @@ public class App {
                     System.out.println("Tchauzinho.\nQue a força esteja com você...\n");
                     System.exit(0);
 
-            }
+            } 
         }
+        
     }
+    catch(InputMismatchException e){
+        System.out.println("Digite um numero não uma String");
+    }
+ }
 }
+

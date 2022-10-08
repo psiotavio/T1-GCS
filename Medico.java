@@ -85,6 +85,7 @@ public class Medico extends Usuario {
     }
 
     public void tipoDeLista() {
+        try{
         System.out.println(
                 "\nESCOLHA UM TIPO DE LISTAGEM\n\n[1] LISTAR POR PACIENTE\n[2] LISTAR TODAS AS SOLICITAÇÕES POR EXAME\n[3] VOLTAR");
         int exame = in.nextInt();
@@ -99,6 +100,10 @@ public class Medico extends Usuario {
                 break;
         }
     }
+    catch(InputMismatchException e){
+        System.out.println("Digite um numero não uma String");
+    }
+}
 
     public void listarTodasAutorizacoesPorPaciente() {
         try{
@@ -113,6 +118,7 @@ public class Medico extends Usuario {
     }
 
     public void listarTodasAutorizacoesPorExame() {
+        try{
         System.out.println(
                 "Escolha o exame da sua autorizacao\n\n[1] RaioX\n[2] Tomografia\n[3] Mamografia\n[4] Colonoscopia\n[5] Endoscopia\n[6] Hemograma\n[7] Audiometria\n[8] Espirometria\n[9] Ultrassonografia\n[10] Eletrocardiograma\n");
         int exame = in.nextInt();
@@ -189,7 +195,11 @@ public class Medico extends Usuario {
                 break;
 
         }
+    } catch(InputMismatchException e){
+        System.out.println("Digite um numero não uma String");
     }
+}
+
     
     public String getAutorizacoes()
     {
