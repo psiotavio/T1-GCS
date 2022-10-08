@@ -128,7 +128,11 @@ public class Medico extends Usuario {
             System.out.println("Digite enter");
             in.useDelimiter("\r?\n").nextLine();
         }
+    }
 
+    public void retirarUltimaAutorizacao() {
+        System.out.println("\nAUTORIZAÇÃO" + autorizacoes.get(autorizacoes.size()-1) + "\nREMOVIDA COM SUCESSO");
+        autorizacoes.remove((autorizacoes.size()-1));
     }
 
     public void listarTodasAutorizacoesPorExame() {

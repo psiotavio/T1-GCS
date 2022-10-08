@@ -35,7 +35,7 @@ public class App {
                                     System.out.println(med);
                                     System.out.println("\n-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_\n");
                                     System.out.println(
-                                            "\nSELECIONE UMA OPÇÃO: \n\n1- NOVO EXAME\n2- LISTAR EXAMES\n3- SAIR\n");
+                                            "\nSELECIONE UMA OPÇÃO: \n\n1- NOVO EXAME\n2- LISTAR EXAMES\n 3-REMOVER ULTIMA AUTORIZACAO\n 4- SAIR\n");
                                     int menu2 = scan.nextInt();
 
                                     switch (menu2) {
@@ -51,8 +51,13 @@ public class App {
                                                     "\n\n-----------------------------------------------------\nPRESSIONE ENTER PARA CONTINUAR: ");
                                             scan.useDelimiter("\r?\n").next();
                                             break;
-
                                         case 3:
+                                            med.retirarUltimaAutorizacao();
+                                            System.out.println(
+                                                    "\n\n-----------------------------------------------------\nPRESSIONE ENTER PARA CONTINUAR: ");
+                                            scan.useDelimiter("\r?\n").next();
+                                            break;
+                                        case 4:
                                             menuMed = false;
                                             break;
                                     }
