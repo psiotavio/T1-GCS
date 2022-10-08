@@ -8,6 +8,28 @@ public class Administrador extends Usuario {
         super(id, nome, tipo);
     }
 
+    public void retiraUsuario() { // (FUNÇÃO EXTRA!)
+        boolean aux = false;
+        System.out.println("\nQual o ID do usuario que deseja remover?");
+        int id = in.nextInt();
+        int remove = 0;
+
+        for (Usuario lst : Sistema.lstUsuarios) {
+            if (lst.getId() == id) {
+                aux = true;
+                System.out.println(lst.toString() + "\nREMOVIDO COM SUCESSO!");
+                break;
+            }
+            remove++;
+        }
+
+        if (aux == false) {
+            System.out.println("ERRO ID JÁ EXISTE!");
+        } else {
+            Sistema.lstUsuarios.remove(remove);
+        }
+    }
+
     public void addUsuario() {
         boolean aux = false;
         int id;
