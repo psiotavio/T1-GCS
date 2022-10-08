@@ -10,7 +10,8 @@ public class App {
         System.out.println("\n-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_\n");
 
         while (true) {
-            System.out.println("\nOLÁ QUE TIPO DE USUARIO VOCÊ É: \n\n1- MÉDICO\n2- PACIENTE\n3- ADMINISTRADOR\n4- SAIR\n");
+            System.out.println(
+                    "\nOLÁ QUE TIPO DE USUARIO VOCÊ É: \n\n1- MÉDICO\n2- PACIENTE\n3- ADMINISTRADOR\n4- SAIR\n");
             int m = scan.nextInt();
             System.out.println("--------------------------");
             switch (m) {
@@ -20,31 +21,36 @@ public class App {
                     System.out.println("\nOLÁ QUAL MÉDICO VOCÊ É:");
                     scan.nextLine();
                     nome = scan.nextLine();
-                    Medico med = (Medico) Sistema.getUsuario(nome); // MÉTODO PARA USAR O MÉDICO SELECIONADO E SUAS FUNÇÕES
-                    while (menuMed == true) {
-                        System.out.println(med);
-                        System.out.println("\n-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_\n");
-                        System.out.println("\nSELECIONE UMA OPÇÃO: \n\n1- NOVO EXAME\n2- LISTAR EXAMES\n3- SAIR\n");
-                        int menu2 = scan.nextInt();
+                    if (Sistema.getUsuario(nome) instanceof Medico) {
+                        Medico med = (Medico) Sistema.getUsuario(nome); // MÉTODO PARA USAR O MÉDICO SELECIONADO E SUAS
+                                                                        // FUNÇÕES
+                        while (menuMed == true) {
+                            System.out.println(med);
+                            System.out.println("\n-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_\n");
+                            System.out.println("\nSELECIONE UMA OPÇÃO: \n\n1- NOVO EXAME\n2- LISTAR EXAMES\n3- SAIR\n");
+                            int menu2 = scan.nextInt();
 
-                        switch (menu2) {
-                            case 1:
-                               med.addAutorizacao();
-                                System.out.println(
-                                        "\n\n-----------------------------------------------------\nPRESSIONE ENTER PARA CONTINUAR: ");
-                                scan.useDelimiter("\r?\n").next();
-                                break;
-                            case 2:
-                                med.tipoDeLista();
-                                System.out.println(
-                                        "\n\n-----------------------------------------------------\nPRESSIONE ENTER PARA CONTINUAR: ");
-                                scan.useDelimiter("\r?\n").next();
-                                break;
+                            switch (menu2) {
+                                case 1:
+                                    med.addAutorizacao();
+                                    System.out.println(
+                                            "\n\n-----------------------------------------------------\nPRESSIONE ENTER PARA CONTINUAR: ");
+                                    scan.useDelimiter("\r?\n").next();
+                                    break;
+                                case 2:
+                                    med.tipoDeLista();
+                                    System.out.println(
+                                            "\n\n-----------------------------------------------------\nPRESSIONE ENTER PARA CONTINUAR: ");
+                                    scan.useDelimiter("\r?\n").next();
+                                    break;
 
-                            case 3:
-                                menuMed = false;
-                                break;
+                                case 3:
+                                    menuMed = false;
+                                    break;
+                            }
                         }
+                    } else {
+                        System.out.println("\nERRO: MÉDICO NÃO ENCONTRADO\n");
                     }
 
                     break;
@@ -55,8 +61,10 @@ public class App {
                     System.out.println("\nOLÁ QUAL PACIENTE VOCÊ É:");
                     scan.nextLine();
                     nome = scan.nextLine();
-                    Paciente pac = (Paciente) Sistema.getUsuario(nome); // MÉTODO PARA USAR O PACIENTE SELECIONADO E SUAS
-                                                                  // FUNÇÕES
+                    if (Sistema.getUsuario(nome) instanceof Paciente) {
+                    Paciente pac = (Paciente) Sistema.getUsuario(nome); // MÉTODO PARA USAR O PACIENTE SELECIONADO E
+                                                                        // SUAS
+                    // FUNÇÕES
                     while (menuPac == true) {
                         System.out.println(pac);
                         System.out.println("\n-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_\n");
@@ -83,6 +91,11 @@ public class App {
                                 break;
                         }
                     }
+                }
+                else 
+                {
+                    System.out.println("\nERRO: PACIENTE NÃO ENCONTRADO\n");
+                }
                     break;
 
                 case 3: // Administrador
@@ -91,15 +104,16 @@ public class App {
                     System.out.println("\nOLÁ QUAL ADMINISTRADOR VOCÊ É:");
                     scan.nextLine();
                     nome = scan.nextLine();
-                    Administrador adm = (Administrador) Sistema.getUsuario(nome); // MÉTODO PARA USAR O ADM SELECIONADO E SUAS
-                                                                            // FUNÇÕES
+                    if (Sistema.getUsuario(nome) instanceof Administrador) {
+                    Administrador adm = (Administrador) Sistema.getUsuario(nome); // MÉTODO PARA USAR O ADM SELECIONADO
+                                                                                  // E SUAS
+                    // FUNÇÕES
                     while (menuAdm == true) {
                         System.out.println(adm);
                         System.out.println("\n-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_\n");
                         System.out.println(
-                            "\nSELECIONE UMA OPÇÃO: \n\n1- ADICIONAR USUÁRIO\n2- VER ESTATÍSTICAS\n3- LISTAR AUTORIZACOES DE UM PACIENTE OU MEDICO\n4- SAIR\n");
+                                "\nSELECIONE UMA OPÇÃO: \n\n1- ADICIONAR USUÁRIO\n2- VER ESTATÍSTICAS\n3- LISTAR AUTORIZACOES DE UM PACIENTE OU MEDICO\n4- SAIR\n");
                         int menu2 = scan.nextInt();
-
 
                         switch (menu2) {
                             case 1:
@@ -118,7 +132,7 @@ public class App {
                             case 3:
                                 adm.buscarAutNome();
                                 System.out.println(
-                                    "\n\n-----------------------------------------------------\nPRESSIONE ENTER PARA CONTINUAR: ");
+                                        "\n\n-----------------------------------------------------\nPRESSIONE ENTER PARA CONTINUAR: ");
                                 scan.useDelimiter("\r?\n").next();
                                 break;
                             case 4:
@@ -126,6 +140,11 @@ public class App {
                                 break;
                         }
                     }
+                }
+                else 
+                {
+                    System.out.println("\nERRO: ADMINISTRADOR NÃO ENCONTRADO\n");
+                }
                     break;
 
                 case 4: // Fecha o programa

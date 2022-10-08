@@ -1,10 +1,3 @@
-import java.io.BufferedReader;
-import java.io.PrintWriter;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 public abstract class Usuario {
     // Cada usuário tem um identificador, um nome e o seu tipo: médico, paciente
     // ou administrador.
