@@ -1,14 +1,8 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.Scanner;
-
 public class Sistema {
     static LinkedList<Usuario> lstUsuarios;
     Scanner in = new Scanner(System.in);
@@ -55,26 +49,6 @@ public class Sistema {
             System.out.println("Error: " + e.getMessage());
         }
     }
-
-    public void salvaArquivo() {    //SALVA ARQUIVO COM A LISTA DE USUARIOS DO MOMENTO UTILIZADO
-
-        Path path = Paths.get("Usuarios.csv");
-
-        try(PrintWriter writer = new PrintWriter(Files.newBufferedWriter(path, Charset.defaultCharset()));
-            BufferedReader reader = Files.newBufferedReader(path, Charset.defaultCharset())) {
-
-            for(Usuario c : lstUsuarios){     //SALVA EM UMA LINHA O CSV ID;NOME;TIPO
-                String t = c.toCsv();
-                writer.println(t);          //PRINTA NA LINHA E PULA PARA A PROXIMA
-                writer.flush();
-
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     public static int getQtdMedicos() { // PEGA TOTAL DE MEDICOS DA LISTA
         return qtdMedicos;
@@ -138,33 +112,13 @@ public class Sistema {
             }
         }
     }catch(NullPointerException exception){
-        System.out.println("Erro.");
+        System.out.println("ERRO: USUARIO NÃO ENCONTRADO");
+    }
+    catch(StringIndexOutOfBoundsException e)
+    {
+        System.out.println("ERRO: USUARIO NÃO ENCONTRADO");
     }
         return null;
-    }
-
-    // VERIFICAR ESSE MÉTODO (APARENTEMENTE NÃO SERVE PRA NADA JÁ EXISTE getUsuario())
-    public String buscaUsuario(){ // DEPENDENDO DE COMO FICAR A AUTORIZACAO VAI TER QUE MUDAR A SAIDA DO METODO
-        System.out.println("Qual o nome do usuario a ser pesquisado? ");
-        String nome = inS.nextLine();
-        String[] vector = nome.split(" "); //SEPARA O NOME E SOBRENOME
-        for (Usuario lst : lstUsuarios) { //PESQUISA POR TODOS OS USUARIOS
-            for(int i=0;i<vector.length;i++){ //PESQUISA O NOME E SOBRENOME PRA VER SE TEM UM IGUAL AO DO VETOR
-                if (lst.getNome().equals(vector[i])) {
-                    //RETORNA A LISTA DE AUTORIZACOES (ESPERANDO A LISTA)
-                }
-            }
-        }
-        return nome;
-    }
-
-    public String estatisticas(){ 
-        String descricao = "";
-        descricao += getQtdMedicos() + "\n";
-        descricao += getQtdPacientes() + "\n";
-        descricao += Autorizacao.getQtdAutorizacoes() + "\n";
-        descricao += Autorizacao.getPercentualRealizados() + "%\n";
-        return descricao;
     }
 
 }

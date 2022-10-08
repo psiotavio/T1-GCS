@@ -8,15 +8,45 @@ public class Administrador extends Usuario {
         super(id, nome, tipo);
     }
 
+    public void retiraUsuario() { // (FUNÇÃO EXTRA!)
+        boolean aux = false;
+        boolean aux2 = false;
+        System.out.println("\nQual o ID do usuario que deseja remover?");
+        int id = in.nextInt();
+        int remove = 0;
+
+        for (Usuario lst : Sistema.lstUsuarios) {
+            if (lst.getId() == id) {
+                aux = true;
+                System.out.println(lst.toString() + "\nREMOVIDO COM SUCESSO!");
+                break;
+            }
+            if (lst.getId() == this.getId())
+            {
+                System.out.println("ERRO VOCÊ NÃO PODE SE REMOVER");
+                aux2 = true;
+                break;
+            }
+            remove++;
+        }
+
+        if (aux == false && aux2 == false) {
+            System.out.println("ERRO USUARIO NÃO ENCONTRADO");
+        } else {
+            Sistema.lstUsuarios.remove(remove);
+        }
+    }
+
     public void addUsuario() {
         boolean aux = false;
         int id;
+        String UsuarioNome = "";
 
         System.out.println("Qual o id do usuario? ");
         id = in.nextInt();
 
         for (Usuario lst : Sistema.lstUsuarios) {
-            if (lst.getId() != id) {
+            if (lst.getId() == id) {
                 aux = true;
             }
         }
@@ -24,61 +54,72 @@ public class Administrador extends Usuario {
         if (aux == false) {
             System.out.println("Qual o nome do usuario? ");
             String nome = inS.nextLine();
-            System.out.println("Qual o tipo do usuario? ");
-            String tipo = inS.nextLine();
+            String subNomes[] = nome.split(" ");
 
-            if (tipo.equalsIgnoreCase("Paciente")) { // ADD AS INFOS NA LINKEDLIST
-                Usuario u = new Paciente(id, nome, tipo);
-                Sistema.lstUsuarios.add(u);
-            } else if (tipo.equalsIgnoreCase("Medico")) {
-                Usuario u = new Medico(id, nome, tipo);
-                Sistema.lstUsuarios.add(u);
-            } else if (tipo.equalsIgnoreCase("Administrador")) {
-                Usuario u = new Administrador(id, nome, tipo);
-                Sistema.lstUsuarios.add(u);
-            }
-        }
-        else System.out.println("ERRO ID JÁ EXISTE!");
-    }
-
-            public String estatisticas(){ 
-                String descricao = "";
-                descricao += Sistema.getQtdMedicos() + "\n";
-                descricao += Sistema.getQtdPacientes() + "\n";
-                descricao += Autorizacao.getQtdAutorizacoes() + "\n";
-                descricao += Autorizacao.getPercentualRealizados() + "%\n";
-                return descricao;
-            }
-            
-            public void buscarAutNome(){
-                System.out.println("Deseja buscar as autorizacoes de um medico ou paciente?\n\n[1] Paciente\n[2] Medico");
-                int escolha = in.nextInt();
-                in.nextLine();
-                switch(escolha){
-                    case 1:
-                        System.out.println("Qual o nome do paciente?");
-                        String nomeP = in.nextLine();
-                        Paciente p = (Paciente) Sistema.getUsuario(nomeP);
-                        if(p == null){System.out.println("\nPaciente nao existe!");}
-                        else if(p.getAutorizacoes().equals("[]")){
-                            System.out.println("\nNão há nenhuma autorizacao deste paciente");
-                        }
-                        else{
-                            System.out.println(p.getAutorizacoes() + "\n");
-                        }
-                        break;
-                    case 2:
-                        System.out.println("Qual o nome do medico?");
-                        String nomeM = in.nextLine();
-                        Medico m = (Medico) Sistema.getUsuario(nomeM);
-                        if(m == null){System.out.println("\nMedico nao existe!");}
-                        else if(m.getAutorizacoes().equals("[]")){
-                            System.out.println("\nNão há nenhuma autorizacao deste medico");
-                        }
-                        else{
-                            System.out.println(m.getAutorizacoes() + "\n");
-                        }
+            for (int i = 0; i < subNomes.length; i++) {
+                if (i == (subNomes.length - 1)) {
+                    UsuarioNome += subNomes[i].substring(0, 1).toUpperCase() + subNomes[i].substring(1);
+                } else {
+                    UsuarioNome += subNomes[i].substring(0, 1).toUpperCase() + subNomes[i].substring(1) + " ";
                 }
             }
+
+            System.out.println("Qual o tipo do usuario? ");
+            String tipo = inS.nextLine();
+            tipo = tipo.substring(0, 1).toUpperCase() + tipo.substring(1);
+
+            if (tipo.equalsIgnoreCase("Paciente")) { // ADD AS INFOS NA LINKEDLIST
+                Usuario u = new Paciente(id, UsuarioNome, tipo);
+                Sistema.lstUsuarios.add(u);
+            } else if (tipo.equalsIgnoreCase("Medico")) {
+                Usuario u = new Medico(id, UsuarioNome, tipo);
+                Sistema.lstUsuarios.add(u);
+            } else if (tipo.equalsIgnoreCase("Administrador")) {
+                Usuario u = new Administrador(id, UsuarioNome, tipo);
+                Sistema.lstUsuarios.add(u);
+            }
+        } else
+            System.out.println("ERRO ID JÁ EXISTE!");
+    }
+
+    public String estatisticas() {
+        String descricao = "";
+        descricao += "Número de médicos: " + Sistema.getQtdMedicos() + "\n";
+        descricao += "Número de pacientes: " + Sistema.getQtdPacientes() + "\n";
+        descricao += "Número de autorizações: " + Autorizacao.getQtdAutorizacoes() + "\n";
+        descricao += "Percentual de exames realizados: " + Autorizacao.getPercentualRealizados() + "%\n";
+        return descricao;
+    }
+
+    public void buscarAutNome() {
+        System.out.println("Deseja buscar as autorizacoes de um medico ou paciente?\n\n[1] Paciente\n[2] Medico");
+        int escolha = in.nextInt();
+        in.nextLine();
+        switch (escolha) {
+            case 1:
+                System.out.println("Qual o nome do paciente?");
+                String nomeP = in.nextLine();
+                Paciente p = (Paciente) Sistema.getUsuario(nomeP);
+                if (p == null) {
+                    System.out.println("\nPaciente nao existe!");
+                } else if (p.getAutorizacoes().equals("[]")) {
+                    System.out.println("\nNão há nenhuma autorizacao deste paciente");
+                } else {
+                    System.out.println(p.getAutorizacoes() + "\n");
+                }
+                break;
+            case 2:
+                System.out.println("Qual o nome do medico?");
+                String nomeM = in.nextLine();
+                Medico m = (Medico) Sistema.getUsuario(nomeM);
+                if (m == null) {
+                    System.out.println("\nMedico nao existe!");
+                } else if (m.getAutorizacoes().equals("[]")) {
+                    System.out.println("\nNão há nenhuma autorizacao deste medico");
+                } else {
+                    System.out.println(m.getAutorizacoes() + "\n");
+                }
+        }
+    }
 
 }

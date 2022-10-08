@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -19,6 +20,7 @@ public class Medico extends Usuario {
     }
 
     public void addAutorizacao() {
+        try {
         System.out.println("Digite o codigo da sua autorizacao");
         int codigo = in.nextInt();
         in.nextLine();
@@ -26,7 +28,7 @@ public class Medico extends Usuario {
         System.out.println("Digite a data de registro da sua autorizacao");
         String date = in.nextLine();
         DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        try {
+       
             LocalDate formattedDate = LocalDate.parse(date, df);
 
             System.out.println("Digite o paciente da sua autorizacao");
@@ -74,12 +76,19 @@ public class Medico extends Usuario {
             System.out.println(autorizacao.toString());
             adicionaAutorizacao(autorizacao);
         }
+        catch(InputMismatchException e){
+            System.out.println("Digite um numero não uma String");
+            System.out.println("Digite enter");
+            in.useDelimiter("\r?\n").nextLine();
+        }
         catch (DateTimeParseException e1) {
             System.out.println("Formatação inválida para a data.");
+            
         }
     }
 
     public void tipoDeLista() {
+        try{
         System.out.println(
                 "\nESCOLHA UM TIPO DE LISTAGEM\n\n[1] LISTAR POR PACIENTE\n[2] LISTAR TODAS AS SOLICITAÇÕES POR EXAME\n[3] VOLTAR");
         int exame = in.nextInt();
@@ -94,20 +103,40 @@ public class Medico extends Usuario {
                 break;
         }
     }
+    catch(InputMismatchException e){
+        System.out.println("Digite um numero não uma String");
+        System.out.println("Digite enter");
+        in.useDelimiter("\r?\n").nextLine();
+    }
+}
 
     public void listarTodasAutorizacoesPorPaciente() {
         try{
         System.out.println("DIGITE O NOME DO PACIENTE: ");
         String pac = in.next();
+
+        if (Sistema.getUsuario(pac) instanceof Paciente)
+        {
         Paciente p = (Paciente) Sistema.getUsuario(pac);
         System.out.println(p.getAutorizacoes());
+        }
+        else {
+            System.out.println("Erro: PACIENTE NÃO ENCONTRADO");
+        }
         }catch(NullPointerException e){
             System.out.println("Erro.");
+            System.out.println("Digite enter");
+            in.useDelimiter("\r?\n").nextLine();
         }
+    }
 
+    public void retirarUltimaAutorizacao() {
+        System.out.println("\nAUTORIZAÇÃO" + autorizacoes.get(autorizacoes.size()-1) + "\nREMOVIDA COM SUCESSO");
+        autorizacoes.remove((autorizacoes.size()-1));
     }
 
     public void listarTodasAutorizacoesPorExame() {
+        try{
         System.out.println(
                 "Escolha o exame da sua autorizacao\n\n[1] RaioX\n[2] Tomografia\n[3] Mamografia\n[4] Colonoscopia\n[5] Endoscopia\n[6] Hemograma\n[7] Audiometria\n[8] Espirometria\n[9] Ultrassonografia\n[10] Eletrocardiograma\n");
         int exame = in.nextInt();
@@ -184,7 +213,13 @@ public class Medico extends Usuario {
                 break;
 
         }
+    } catch(InputMismatchException e){
+        System.out.println("Digite um numero não uma String");
+        System.out.println("Digite enter");
+        in.useDelimiter("\r?\n").nextLine();
     }
+}
+
     
     public String getAutorizacoes()
     {
