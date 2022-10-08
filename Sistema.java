@@ -112,7 +112,11 @@ public class Sistema {
             }
         }
     }catch(NullPointerException exception){
-        System.out.println("Erro.");
+        System.out.println("ERRO: USUARIO NÃO ENCONTRADO");
+    }
+    catch(StringIndexOutOfBoundsException e)
+    {
+        System.out.println("ERRO: USUARIO NÃO ENCONTRADO");
     }
         return null;
     }

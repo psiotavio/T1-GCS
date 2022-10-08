@@ -78,9 +78,12 @@ public class Medico extends Usuario {
         }
         catch(InputMismatchException e){
             System.out.println("Digite um numero não uma String");
+            System.out.println("Digite enter");
+            in.useDelimiter("\r?\n").nextLine();
         }
         catch (DateTimeParseException e1) {
             System.out.println("Formatação inválida para a data.");
+            
         }
     }
 
@@ -102,6 +105,8 @@ public class Medico extends Usuario {
     }
     catch(InputMismatchException e){
         System.out.println("Digite um numero não uma String");
+        System.out.println("Digite enter");
+        in.useDelimiter("\r?\n").nextLine();
     }
 }
 
@@ -109,10 +114,19 @@ public class Medico extends Usuario {
         try{
         System.out.println("DIGITE O NOME DO PACIENTE: ");
         String pac = in.next();
+
+        if (Sistema.getUsuario(pac) instanceof Paciente)
+        {
         Paciente p = (Paciente) Sistema.getUsuario(pac);
         System.out.println(p.getAutorizacoes());
+        }
+        else {
+            System.out.println("Erro: PACIENTE NÃO ENCONTRADO");
+        }
         }catch(NullPointerException e){
             System.out.println("Erro.");
+            System.out.println("Digite enter");
+            in.useDelimiter("\r?\n").nextLine();
         }
 
     }
@@ -197,6 +211,8 @@ public class Medico extends Usuario {
         }
     } catch(InputMismatchException e){
         System.out.println("Digite um numero não uma String");
+        System.out.println("Digite enter");
+        in.useDelimiter("\r?\n").nextLine();
     }
 }
 
