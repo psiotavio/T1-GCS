@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -19,6 +20,7 @@ public class Medico extends Usuario {
     }
 
     public void addAutorizacao() {
+        try {
         System.out.println("Digite o codigo da sua autorizacao");
         int codigo = in.nextInt();
         in.nextLine();
@@ -26,7 +28,7 @@ public class Medico extends Usuario {
         System.out.println("Digite a data de registro da sua autorizacao");
         String date = in.nextLine();
         DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        try {
+       
             LocalDate formattedDate = LocalDate.parse(date, df);
 
             System.out.println("Digite o paciente da sua autorizacao");
@@ -73,6 +75,9 @@ public class Medico extends Usuario {
             pac.adicionaAutorizacao(autorizacao);
             System.out.println(autorizacao.toString());
             adicionaAutorizacao(autorizacao);
+        }
+        catch(InputMismatchException e){
+            System.out.println("Digite um numero não uma String");
         }
         catch (DateTimeParseException e1) {
             System.out.println("Formatação inválida para a data.");
