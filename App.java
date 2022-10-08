@@ -35,7 +35,7 @@ public class App {
                                     System.out.println(med);
                                     System.out.println("\n-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_\n");
                                     System.out.println(
-                                            "\nSELECIONE UMA OPÇÃO: \n\n1- NOVO EXAME\n2- LISTAR EXAMES\n 3-REMOVER ULTIMA AUTORIZACAO\n 4- SAIR\n");
+                                            "\nSELECIONE UMA OPÇÃO: \n\n1- NOVO EXAME\n2- LISTAR EXAMES\n3-REMOVER ULTIMA AUTORIZACAO\n4- SAIR\n");
                                     int menu2 = scan.nextInt();
 
                                     switch (menu2) {
