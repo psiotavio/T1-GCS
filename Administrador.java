@@ -43,10 +43,10 @@ public class Administrador extends Usuario {
 
             public String estatisticas(){ 
                 String descricao = "";
-                descricao += Sistema.getQtdMedicos() + "\n";
-                descricao += Sistema.getQtdPacientes() + "\n";
-                descricao += Autorizacao.getQtdAutorizacoes() + "\n";
-                descricao += Autorizacao.getPercentualRealizados() + "%\n";
+                descricao += "Número de médicos: " + Sistema.getQtdMedicos() + "\n";
+                descricao += "Número de pacientes: " + Sistema.getQtdPacientes() + "\n";
+                descricao += "Número de autorizações: "+ Autorizacao.getQtdAutorizacoes() + "\n";
+                descricao += "Percentual de exames realizados: "+ Autorizacao.getPercentualRealizados() + "%\n";
                 return descricao;
             }
             

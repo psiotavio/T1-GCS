@@ -143,13 +143,4 @@ public class Sistema {
         return null;
     }
 
-    public String estatisticas(){ 
-        String descricao = "";
-        descricao += getQtdMedicos() + "\n";
-        descricao += getQtdPacientes() + "\n";
-        descricao += Autorizacao.getQtdAutorizacoes() + "\n";
-        descricao += Autorizacao.getPercentualRealizados() + "%\n";
-        return descricao;
-    }
-
 }
