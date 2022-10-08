@@ -35,22 +35,4 @@ public abstract class Usuario {
     public String toString() {
         return "----------------\nUsuario: " + id + "\nNome: " + nome + "\nTipo: " + tipo + "\n----------------";
     }
-
-    public String toCsv() { // TRANSFORMA EM CSV ID;NOME;TIPO PARA SALVAR ARQUIVO
-        Path path = Paths.get("toCsv.csv");
-
-        try (PrintWriter writer = new PrintWriter(Files.newBufferedWriter(path, Charset.defaultCharset()));
-                BufferedReader reader = Files.newBufferedReader(path, Charset.defaultCharset())) {
-            writer.format("%d;%s;%s", getId(), getNome(), getTipo());
-            writer.flush();
-            String line = null;
-            line = reader.readLine();
-            return line;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return null;
-    }
 }

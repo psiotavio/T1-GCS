@@ -56,26 +56,6 @@ public class Sistema {
         }
     }
 
-    public void salvaArquivo() {    //SALVA ARQUIVO COM A LISTA DE USUARIOS DO MOMENTO UTILIZADO
-
-        Path path = Paths.get("Usuarios.csv");
-
-        try(PrintWriter writer = new PrintWriter(Files.newBufferedWriter(path, Charset.defaultCharset()));
-            BufferedReader reader = Files.newBufferedReader(path, Charset.defaultCharset())) {
-
-            for(Usuario c : lstUsuarios){     //SALVA EM UMA LINHA O CSV ID;NOME;TIPO
-                String t = c.toCsv();
-                writer.println(t);          //PRINTA NA LINHA E PULA PARA A PROXIMA
-                writer.flush();
-
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
     public static int getQtdMedicos() { // PEGA TOTAL DE MEDICOS DA LISTA
         return qtdMedicos;
     }
